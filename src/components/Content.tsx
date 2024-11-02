@@ -56,7 +56,7 @@ const Content: React.FC = () => {
         "JavaScript",
         "Bootstrap",
       ],
-      imageUrl: "./images/project/my_dictionary.png",
+      imageUrl: "",
       githubUrl: "https://github.com/foreverfl/web-my-dictonary",
     },
     {
@@ -72,7 +72,7 @@ const Content: React.FC = () => {
         "JavaScript",
         "Bootstrap",
       ],
-      imageUrl: "./images/project/my_study_materials.png",
+      imageUrl: "",
       githubUrl: "https://github.com/foreverfl/web-my-study-materials",
     },
     {
@@ -90,7 +90,7 @@ const Content: React.FC = () => {
         "JavaScript",
         "Bootstrap",
       ],
-      imageUrl: "./images/project/od.png",
+      imageUrl: "",
       githubUrl: "https://github.com/foreverfl/web-od",
     },
     {
@@ -106,7 +106,7 @@ const Content: React.FC = () => {
         "React",
         "Tailwind CSS",
       ],
-      imageUrl: "./images/project/blog.png",
+      imageUrl: "",
       githubUrl: "https://mogumogu.dev/",
       websiteUrl: "https://mogumogu.dev/",
     },
@@ -116,7 +116,7 @@ const Content: React.FC = () => {
       description:
         "과외를 할 때 학생들의 단어를 체계적으로 관리하기 위해서 만든 개인 용도 프로그램입니다.",
       techStack: ["SQLite", "JavaFX"],
-      imageUrl: "./images/project/manage_words.png",
+      imageUrl: "",
       githubUrl: "https://github.com/foreverfl/desktop-manage-words",
     },
   ];
