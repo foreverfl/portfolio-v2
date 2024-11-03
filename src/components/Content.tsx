@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import HeroBackground from "./contents/HeroBackground";
 import CatchPhrase from "./contents/CatchPhrase";
 import ExperienceCard from "./contents/ExperienceCard";
@@ -18,6 +18,18 @@ const Content: React.FC = () => {
         "Thymeleaf 및 jQuery를 통해 효율적인 사용자 인터페이스 설계",
       ],
       imageUrl: `${process.env.PUBLIC_URL}/images/experience/skewed_ktcs.jpg`,
+    },
+    {
+      title: "AI 엔지니어 교육생",
+      subtitle: "KT Aivle School",
+      period: "2023. 8 ~ 2024. 1",
+      works: [
+        "TTS와 RVC AI 모델링을 활용한 사용자 맞춤 음성 서비스 개발",
+        "백엔드와 프론트엔드 통합 및 코드 리뷰를 통해 전체적인 품질 관리",
+        "Django 및 Bootstrap 기반 프론트엔드와 백엔드 설계 및 개발",
+        "프로젝트 관리 도구(Jira)를 통한 일정 관리와 팀 리딩",
+      ],
+      imageUrl: `${process.env.PUBLIC_URL}/images/experience/skewed_aivle.jpg`,
     },
     {
       title: "기지중대장/작전통제장교",
@@ -45,86 +57,135 @@ const Content: React.FC = () => {
 
   const projects = [
     {
-      title: "개인 프로젝트",
-      projectName: "My Dictionary",
+      title: "My Dictionary",
       description:
-        "구글 확장프로그램을 통해 사전 사이트에서 단어를 저장하고 학습하는 웹사이트입니다. 현재 운영중인 사이트에서 수익화가 완료되면 배포할 예정입니다.",
+        "개발을 시작한 후 처음으로 만든 사이트입니다. 크롬 확장 프로그램을 통해 단어를 데이터베이스에 저장하고, 해당 단어를 학습할 수 있는 웹사이트입니다. Spring Data JPA 및 Spring Security 를 활용했습니다. 저작권 문제로 인해 배포는 하지 않았습니다. 추후 Rust와 AI 기반 API 서버를 구축하여 확장 프로그램과 앱을 통한 서비스를 제공할 예정입니다.",
       techStack: [
+        // 데이터베이스
         "MySQL",
-        "SpringBoot",
+
+        // 백엔드
+        "Spring Framework",
+
+        // 프론트엔드
         "Thymeleaf",
-        "HTML/CSS",
+
+        // 프로그래밍 언어
+        "Java",
         "JavaScript",
+        "HTML",
+        "CSS",
+
+        // 스타일링
         "Bootstrap",
       ],
-      imageUrl: "",
+      imageUrl: `${process.env.PUBLIC_URL}/images/projects/my_dictionary.png`,
       githubUrl: "https://github.com/foreverfl/web-my-dictonary",
     },
     {
-      title: "개인 프로젝트",
-      projectName: "My Study Materials",
+      title: "My Study Materials",
       description:
-        "개인 공부 자료를 정리할 수 있는 웹사이트입니다. 현재 제가 정리한 리눅스 공부 정리 자료만 존재합니다. AWS를 통해서 서비스를 하고 있으며, 수익화 예정에 있습니다.",
+        "개인 학습 자료를 체계적으로 정리하기 위해 만든 웹사이트입니다. 리눅스 학습 자료를 주로 정리했으며, 반년 동안 AWS에서 서비스로 운영했습니다. 현재는 서비스가 중단된 상태이며, 향후 문서 번역 프로젝트가 있기 때문에 재배포는 하지 않을 계획입니다.",
       techStack: [
+        // 인프라/배포
         "AWS",
+
+        // 데이터베이스
         "MySQL",
+
+        // 백엔드
         "Django",
-        "HTML/CSS",
+
+        // 프론트엔드
+
+        // 프로그래밍 언어
+        "Python",
         "JavaScript",
+        "HTML",
+        "CSS",
+
+        // 스타일링
         "Bootstrap",
       ],
-      imageUrl: "",
+      imageUrl: `${process.env.PUBLIC_URL}/images/projects/my_study_materials.png`,
       githubUrl: "https://github.com/foreverfl/web-my-study-materials",
     },
     {
-      title: "팀 프로젝트 / 백엔드·프론트엔드 통합",
-      projectName: "O :D",
+      title: "mogumogu's sundries",
       description:
-        "사용자가 원하는 책을 신청받아서 등록하고 해당 책을 TTS와 RVC를 활용한 AI를 통해 원하는 목소리로 읽어주는 서비스입니다. 온프레미스로 배포 예정에 있습니다.",
+        "커스터마이징에 제한이 있던 Wordpress 블로그를 대체하기 위해 React와 Next.js로 직접 제작한 블로그입니다. 다국어 지원과 마크다운 작성 방식을 채택했으며, GitHub에 게시글을 push하면 자동으로 업로드됩니다. Vercel을 통해 배포 중입니다.",
       techStack: [
-        "PyTorch",
-        "PostgreSQL",
-        "Redis",
-        "Django",
-        "HTML/CSS",
-        "SCSS",
-        "JavaScript",
-        "Bootstrap",
-      ],
-      imageUrl: "",
-      githubUrl: "https://github.com/foreverfl/web-od",
-    },
-    {
-      title: "개인 프로젝트",
-      projectName: "mogumogu's sundries",
-      description:
-        "기존의 Wordpress 블로그에서 커스터마이징의 한계를 느끼고, Next.js로 직접 구현한 블로그입니다. 한국어/일본어 다국어 처리를 지원하고 Markdown으로 포스트를 작성합니다.",
-      techStack: [
+        // 인프라/배포
         "Vercel",
-        "Cloudflare R2",
+        "Cloudflare",
+        "GitHub Actions",
+
+        // 데이터베이스
         "MongoDB",
+
+        // 백엔드
         "Next.js",
+        "MDX",
+
+        // 프론트엔드
         "React",
+        "Framer Motion",
+
+        // 프로그래밍 언어
+        "TypeScript",
+        "JavaScript",
+        "HTML",
+        "CSS",
+
+        // 스타일링
         "Tailwind CSS",
       ],
-      imageUrl: "",
-      githubUrl: "https://mogumogu.dev/",
+      imageUrl: `${process.env.PUBLIC_URL}/images/projects/blog-3.png`,
+      videoUrl: `${process.env.PUBLIC_URL}/videos/blog.mp4`,
+      githubUrl: "https://github.com/foreverfl/blog",
       websiteUrl: "https://mogumogu.dev/",
     },
     {
-      title: "개인 프로젝트",
-      projectName: "Manage Words",
+      title: "mogumogu's docs",
       description:
-        "과외를 할 때 학생들의 단어를 체계적으로 관리하기 위해서 만든 개인 용도 프로그램입니다.",
-      techStack: ["SQLite", "JavaFX"],
-      imageUrl: "",
-      githubUrl: "https://github.com/foreverfl/desktop-manage-words",
+        "개발 참조 문서를 한 곳에 모아놓은 사이트입니다. 일부 문서는 직접 번역하여 서브도메인에서 배포하고 있습니다. 향후 가능한 모든 문서를 번역하는 것을 목표로 하고 있으며, Vercel에서 배포 중입니다.",
+      techStack: [
+        // 인프라/배포
+        "Vercel",
+
+        // 백엔드
+        "Next.js",
+
+        // 프론트엔드
+        "React",
+        "Framer Motion",
+
+        // 프로그래밍 언어
+        "TypeScript",
+        "JavaScript",
+        "HTML",
+        "CSS",
+
+        // 스타일링
+        "Tailwind CSS",
+      ],
+      imageUrl: `${process.env.PUBLIC_URL}/images/projects/docs-1.png`,
+      videoUrl: `${process.env.PUBLIC_URL}/videos/docs.mp4`,
+      githubUrl: "https://github.com/foreverfl/docs",
+      websiteUrl: "https://docs.mogumogu.dev/",
     },
   ];
 
   const [hoveredExperienceCard, setHoveredExperienceCard] = useState<
     number | null
   >(null);
+  const [maxProjectCardHeight, setMaxProjectCardHeight] = useState<number>(0);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const heights = cardRefs.current.map((ref) => ref?.clientHeight || 0);
+    setMaxProjectCardHeight(Math.max(...heights));
+  }, [projects.length]);
 
   const handleHover = (index: number) => {
     setHoveredExperienceCard(index);
@@ -169,20 +230,25 @@ const Content: React.FC = () => {
       <Title />
 
       <Title title="Projects" />
-      <div className="container mx-auto mt-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-8">
-          {projects.map((project, index) => (
+      <div className="container mx-auto mt-10 space-y-8">
+        {projects.map((project, index) => (
+          <div
+            key={index}
+            ref={(el) => (cardRefs.current[index] = el)} // 각 카드의 ref 저장
+            className={`${index % 2 === 0 ? "ml-0" : "ml-auto"} w-3/4`} // 홀수는 오른쪽, 짝수는 왼쪽
+          >
             <ProjectCard
-              key={index}
               title={project.title}
-              projectName={project.projectName}
               description={project.description}
               techStack={project.techStack}
               imageUrl={project.imageUrl}
+              videoUrl={project.videoUrl}
               githubUrl={project.githubUrl}
+              isLeft={index % 2 === 0}
+              maxHeight={maxProjectCardHeight}
             />
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
 
       <Title />
