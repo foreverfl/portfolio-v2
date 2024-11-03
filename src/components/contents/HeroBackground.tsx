@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
+import TypingText from "../animation/TypingText";
 
 const videoFiles = [
   `${process.env.PUBLIC_URL}/videos/borame-park.mp4`,
@@ -9,6 +10,16 @@ const videoFiles = [
   `${process.env.PUBLIC_URL}/videos/pusan.mp4`,
   `${process.env.PUBLIC_URL}/videos/sakura.mp4`,
   `${process.env.PUBLIC_URL}/videos/tera.mp4`,
+];
+
+const videoTexts = [
+  "보라매공원",
+  "하늘공원",
+  "해운대",
+  "한라산",
+  "해운대",
+  "구로 어딘가",
+  "충남 태안",
 ];
 
 const gridSize = { rows: 6, cols: 8 };
@@ -62,7 +73,7 @@ const CatchPhrase: React.FC = () => {
         </div>
       )}
 
-      {/* 비디오 슬라이드 효과 */}
+      {/* 비디오 */}
       <motion.video
         key={currentVideoIndex}
         ref={videoRef}
@@ -77,6 +88,14 @@ const CatchPhrase: React.FC = () => {
         exit={{ x: "-100%" }}
         transition={{ duration: 1 }}
       />
+
+      {/* 동영상에 따른 텍스트 */}
+      <div className="absolute left-[8rem] bottom-[10rem] text-white z-20 h-20 select-none">
+        <div className="font-body pb-5">여기는 어디일까요?</div>
+        <div className="font-title text-8xl">
+          <TypingText text={videoTexts[currentVideoIndex]} />
+        </div>
+      </div>
     </div>
   );
 };

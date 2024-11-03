@@ -4,6 +4,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fontsource/black-han-sans": "^5.1.0",
+    "@fontsource/lilita-one": "^5.1.0",
+    "@fontsource/mochiy-pop-one": "^5.1.0",
+    "@fontsource/noto-sans-jp": "^5.1.0",
+    "@fontsource/noto-sans-kr": "^5.1.0",
+    "@fontsource/roboto": "^5.1.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -47,6 +53,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.14"

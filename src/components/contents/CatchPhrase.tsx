@@ -2,7 +2,7 @@ import React from "react";
 
 const CatchPhrase: React.FC = () => {
   return (
-    <>
+    <div className="container mx-auto">
       <div className="text-lg">제 이름은</div>
       <div className="text-4xl mt-2 md:mt-0 md:ml-4">전명규입니다.</div>
       <pre className="text-base mt-4">
@@ -17,7 +17,7 @@ const CatchPhrase: React.FC = () => {
           이메일로 포지션 제안하기
         </button>
       </div>
-    </>
+    </div>
   );
 };
 
