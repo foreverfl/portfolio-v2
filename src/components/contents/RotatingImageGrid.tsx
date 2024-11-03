@@ -29,7 +29,7 @@ const RotatingImageGrid: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000); // 1초마다 이미지 변경
+    }, 2000);
 
     return () => clearInterval(interval);
   }, []);

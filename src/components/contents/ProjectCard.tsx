@@ -1,4 +1,4 @@
-import { Github } from "@geist-ui/icons";
+import { FileText, Github } from "@geist-ui/icons";
 import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import Modal from "react-modal";
@@ -13,6 +13,7 @@ interface ProjectCardProps {
   imageUrl: string;
   videoUrl?: string;
   githubUrl: string;
+  siteUrl?: string;
   isLeft: boolean;
   maxHeight: number;
 }
@@ -24,6 +25,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   imageUrl,
   videoUrl,
   githubUrl,
+  siteUrl,
   isLeft,
   maxHeight,
 }) => {
@@ -105,6 +107,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         <div
           className={`flex mt-4 ${isLeft ? "justify-end" : "justify-start"}`}
         >
+          {/* GitHub */}
           <a
             href={githubUrl}
             target="_blank"
@@ -113,6 +116,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           >
             <Github className="w-8 h-8 transition-transform transform hover:scale-110" />
           </a>
+          {/* Website */}
+          {siteUrl && (
+            <a
+              href={siteUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 hover:text-blue-500 transition-colors duration-200 ml-4"
+            >
+              <FileText className="w-8 h-8 transition-transform transform hover:scale-110" />
+            </a>
+          )}
         </div>
       </div>
 

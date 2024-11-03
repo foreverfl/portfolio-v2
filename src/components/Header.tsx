@@ -1,38 +1,110 @@
-import React, { useState } from "react";
-import AudioPlayer from "./audio/AudioPlayer";
-import { Speaker, Moon, Sun } from "@geist-ui/icons";
+import { Moon, Speaker, Sun } from "@geist-ui/icons";
 import "flag-icons/css/flag-icons.min.css";
+import { motion, useAnimation } from "framer-motion";
+import React, { useEffect, useState } from "react";
+import AudioPlayer from "./audio/AudioPlayer";
 
 const Header: React.FC = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [language, setLanguage] = useState("EN");
   const [showLanguageMenu, setShowLanguageMenu] = useState(false);
   const [showAudioPopup, setShowAudioPopup] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const controls = useAnimation();
+  const [textColor, setTextColor] = useState("text-white");
 
   const getFlagClass = (lang: string) => {
     switch (lang) {
       case "EN":
-        return "fi fi-us"; // 미국 국기
+        return "fi fi-us";
       case "JP":
-        return "fi fi-jp"; // 일본 국기
+        return "fi fi-jp";
       case "KR":
-        return "fi fi-kr"; // 한국 국기
+        return "fi fi-kr";
       default:
-        return "fi fi-us"; // 기본값
+        return "fi fi-us";
     }
   };
 
   const toggleDarkMode = () => setDarkMode(!darkMode);
   const changeLanguage = (lang: string) => {
     setLanguage(lang);
-    setShowLanguageMenu(false); // 메뉴 닫기
+    setShowLanguageMenu(false);
   };
+
+  useEffect(() => {
+    const sections = document.querySelectorAll<HTMLElement>(
+      "#about, #experience, #projects"
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        let isAnySectionVisible = false;
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            isAnySectionVisible = true;
+          }
+        });
+
+        if (isAnySectionVisible) {
+          setTextColor("text-black");
+        } else {
+          setTextColor("text-white");
+        }
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "-100px 0px 0px 0px",
+      }
+    );
+
+    sections.forEach((section) => {
+      if (section) observer.observe(section);
+    });
+
+    return () => {
+      sections.forEach((section) => {
+        if (section) observer.unobserve(section);
+      });
+    };
+  }, []);
+
+  // 스크롤 이벤트에 따른 헤더 숨김/표시
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      if (window.scrollY > lastScrollY) {
+        // 스크롤 다운
+        setIsVisible(false);
+      } else {
+        // 스크롤 업
+        setIsVisible(true);
+      }
+      lastScrollY = window.scrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isVisible) {
+      controls.start({ y: 0, opacity: 1 });
+    } else {
+      controls.start({ y: -100, opacity: 0 });
+    }
+  }, [isVisible, controls]);
 
   return (
     <>
-      <div
-        className={`fixed z-50 top-[60px] right-[80px] flex items-center space-x-4 bg-transparent 
-         text-white p-2 rounded`}
+      <motion.div
+        className={`fixed z-50 top-[60px] right-[80px] flex items-center space-x-4 bg-transparent ${textColor} p-2 rounded`}
+        initial={{ y: 0, opacity: 1 }}
+        animate={controls}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
       >
         {/* 네비게이션 링크 */}
         <nav className="flex space-x-8 pe-5">
@@ -56,22 +128,22 @@ const Header: React.FC = () => {
             <span className={getFlagClass(language)}></span>
           </button>
           {showLanguageMenu && (
-            <div className="absolute right-0 mt-2 w-32 bg-white border border-gray-300 rounded shadow-lg z-10">
+            <div className="absolute right-0 mt-2 w-32 rounded z-10">
               <ul className="py-1">
                 <li
-                  className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center space-x-2"
+                  className="px-4 py-2 cursor-pointer flex items-center space-x-2"
                   onClick={() => changeLanguage("EN")}
                 >
                   <span className="fi fi-us"></span>
                 </li>
                 <li
-                  className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center space-x-2"
+                  className="px-4 py-2 cursor-pointer flex items-center space-x-2"
                   onClick={() => changeLanguage("JP")}
                 >
                   <span className="fi fi-jp"></span>
                 </li>
                 <li
-                  className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center space-x-2"
+                  className="px-4 py-2 cursor-pointer flex items-center space-x-2"
                   onClick={() => changeLanguage("KR")}
                 >
                   <span className="fi fi-kr"></span>
@@ -96,7 +168,7 @@ const Header: React.FC = () => {
         >
           <Speaker />
         </button>
-      </div>
+      </motion.div>
 
       {/* 오디오 플레이어 */}
       {showAudioPopup && (

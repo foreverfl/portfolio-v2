@@ -143,7 +143,7 @@ const Content: React.FC = () => {
       imageUrl: `${process.env.PUBLIC_URL}/images/projects/blog-3.png`,
       videoUrl: `${process.env.PUBLIC_URL}/videos/blog.mp4`,
       githubUrl: "https://github.com/foreverfl/blog",
-      websiteUrl: "https://mogumogu.dev/",
+      siteUrl: "https://mogumogu.dev/",
     },
     {
       title: "mogumogu's docs",
@@ -172,7 +172,7 @@ const Content: React.FC = () => {
       imageUrl: `${process.env.PUBLIC_URL}/images/projects/docs-1.png`,
       videoUrl: `${process.env.PUBLIC_URL}/videos/docs.mp4`,
       githubUrl: "https://github.com/foreverfl/docs",
-      websiteUrl: "https://docs.mogumogu.dev/",
+      siteUrl: "https://docs.mogumogu.dev/",
     },
   ];
 
@@ -244,6 +244,7 @@ const Content: React.FC = () => {
               imageUrl={project.imageUrl}
               videoUrl={project.videoUrl}
               githubUrl={project.githubUrl}
+              siteUrl={project.siteUrl}
               isLeft={index % 2 === 0}
               maxHeight={maxProjectCardHeight}
             />
