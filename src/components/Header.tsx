@@ -13,7 +13,7 @@ const Header: React.FC = () => {
 
   return (
     <div
-      className={`fixed z-50 top-4 right-4 flex items-center space-x-4 bg-transparent 
+      className={`fixed z-50 top-[60px] right-[80px] flex items-center space-x-4 bg-transparent 
          text-white p-2 rounded`}
     >
       {/* 네비게이션 링크 */}

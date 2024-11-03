@@ -4,6 +4,7 @@ import CatchPhrase from "./contents/CatchPhrase";
 import ExperienceCard from "./contents/ExperienceCard";
 import ProjectCard from "./contents/ProjectCard";
 import RotatingImageGrid from "./contents/RotatingImageGrid";
+import Title from "./contents/Title";
 
 const Content: React.FC = () => {
   const experiences = [
@@ -125,12 +126,14 @@ const Content: React.FC = () => {
     <>
       <HeroBackground />
 
-      <div className="text-lg">About</div>
+      <Title title="About" />
       <CatchPhrase />
+
+      <Title />
       <RotatingImageGrid />
 
-      <div className="text-lg">Expereince</div>
-      <div>
+      <Title title="Experience" />
+      <div className="container mx-auto">
         {experiences.map((experience, index) => (
           <ExperienceCard
             key={index}
@@ -143,20 +146,24 @@ const Content: React.FC = () => {
         ))}
       </div>
 
-      <div className="text-lg">Project</div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-8">
-        {projects.map((project, index) => (
-          <ProjectCard
-            key={index}
-            title={project.title}
-            projectName={project.projectName}
-            description={project.description}
-            techStack={project.techStack}
-            imageUrl={project.imageUrl}
-            githubUrl={project.githubUrl}
-          />
-        ))}
+      <Title title="Projects" />
+      <div className="container mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-8">
+          {projects.map((project, index) => (
+            <ProjectCard
+              key={index}
+              title={project.title}
+              projectName={project.projectName}
+              description={project.description}
+              techStack={project.techStack}
+              imageUrl={project.imageUrl}
+              githubUrl={project.githubUrl}
+            />
+          ))}
+        </div>
       </div>
+
+      <Title />
     </>
   );
 };

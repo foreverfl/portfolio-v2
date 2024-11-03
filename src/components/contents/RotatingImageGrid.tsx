@@ -41,7 +41,7 @@ const RotatingImageGrid: React.FC = () => {
   };
 
   return (
-    <div className="grid grid-cols-4 grid-rows-2 p-4 gap-1">
+    <div className="grid grid-cols-4 grid-rows-2 p-1 gap-1 overflow-hidden">
       {/* 왼쪽 */}
       <div className="col-span-2 row-span-2 grid grid-cols-2 grid-rows-2 gap-1">
         {/* 1 */}
@@ -50,7 +50,7 @@ const RotatingImageGrid: React.FC = () => {
           className="col-span-2 bg-cover bg-center rounded"
           style={{
             backgroundImage: `url(${images[getRotatedIndex(0)]})`,
-            minWidth: `${gridWidth}px`,
+            minWidth: `calc(${gridWidth}px - 4px)`,
             minHeight: `${gridWidth / 2}px`,
           }}
           initial="initial"
@@ -64,7 +64,7 @@ const RotatingImageGrid: React.FC = () => {
           className="bg-cover bg-center rounded"
           style={{
             backgroundImage: `url(${images[getRotatedIndex(1)]})`,
-            minWidth: `${gridWidth / 2}px`,
+            minWidth: `calc(${gridWidth / 2}px - 4px)`,
             minHeight: `${gridWidth / 2}px`,
           }}
           initial="initial"
@@ -78,7 +78,7 @@ const RotatingImageGrid: React.FC = () => {
           className="bg-cover bg-center rounded"
           style={{
             backgroundImage: `url(${images[getRotatedIndex(2)]})`,
-            minWidth: `${gridWidth / 2}px`,
+            minWidth: `calc(${gridWidth / 2}px - 4px)`,
             minHeight: `${gridWidth / 2}px`,
           }}
           initial="initial"
@@ -88,14 +88,14 @@ const RotatingImageGrid: React.FC = () => {
       </div>
 
       {/* 오른쪽 */}
-      <div className="col-span-2 row-span-2 grid grid-cols-2 gap-9">
+      <div className="col-span-2 row-span-2 grid grid-cols-2 gap-1">
         {/* 3 */}
         <motion.div
           key={getRotatedIndex(3)}
           className="bg-cover bg-center rounded"
           style={{
             backgroundImage: `url(${images[getRotatedIndex(3)]})`,
-            minWidth: `${gridWidth}px`,
+            minWidth: `calc(${gridWidth}px - 12px)`,
             minHeight: `${gridWidth / 2}px`,
           }}
           initial="initial"
@@ -109,7 +109,7 @@ const RotatingImageGrid: React.FC = () => {
           className="bg-cover bg-center rounded"
           style={{
             backgroundImage: `url(${images[getRotatedIndex(4)]})`,
-            minWidth: `${gridWidth}px`,
+            minWidth: `calc(${gridWidth}px - 12px)`,
             minHeight: `${gridWidth / 2}px`,
           }}
           initial="initial"
