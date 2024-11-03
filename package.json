@@ -17,6 +17,7 @@
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.118",
     "@types/react": "^18.3.12",
+    "@types/react-audio-player": "^0.13.0",
     "@types/react-dom": "^18.3.1",
     "flag-icons": "^7.2.3",
     "framer-motion": "^11.11.11",
