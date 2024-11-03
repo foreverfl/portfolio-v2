@@ -18,7 +18,10 @@ const Title: React.FC<TitleProps> = ({ title }) => {
   };
 
   return (
-    <div className="container mx-auto pt-[200px] font-body">
+    <div
+      className="container mx-auto pt-[200px] font-body"
+      id={title ? title.toLowerCase().replace(/\s+/g, "-") : undefined}
+    >
       {title && (
         <div className="flex items-center">
           <div className="pe-3"> (</div>
