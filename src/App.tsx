@@ -2,8 +2,33 @@ import "./App.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Content from "./components/Content";
+import { useEffect } from "react";
 
 function App() {
+  // 이미지/비디오 프리 로드
+  useEffect(() => {
+    const preloadAssets = async () => {
+      const response = await fetch(`${process.env.PUBLIC_URL}/assets.json`);
+      const assets = await response.json();
+
+      if (Array.isArray(assets.images)) {
+        assets.images.forEach((src: string) => {
+          const img = new Image();
+          img.src = src; // 이미지 미리 로드
+        });
+      }
+
+      if (Array.isArray(assets.videos)) {
+        assets.videos.forEach((src: string) => {
+          const video = document.createElement("video");
+          video.src = src; // 비디오 미리 로드
+        });
+      }
+    };
+
+    preloadAssets();
+  }, []);
+
   return (
     <>
       <Header />
