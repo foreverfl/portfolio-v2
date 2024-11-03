@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import HeroBackground from "./contents/HeroBackground";
 import CatchPhrase from "./contents/CatchPhrase";
 import ExperienceCard from "./contents/ExperienceCard";
@@ -13,33 +13,33 @@ const Content: React.FC = () => {
       subtitle: "KT cs",
       period: "2024. 4 ~ now",
       works: [
-        "Spring Framework를 활용한 백엔드 개발",
-        "React를 활용한 프론트엔드 개발",
-        "Thymeleaf 및 Jquery를 활용한 프론트엔드 개발",
+        "Spring Framework를 활용한 안정적이고 확장 가능한 백엔드 시스템 개발",
+        "React로 사용자 경험을 고려한 동적 프론트엔드 구현",
+        "Thymeleaf 및 jQuery를 통해 효율적인 사용자 인터페이스 설계",
       ],
-      imageUrl: `${process.env.PUBLIC_URL}/images/experience/ktcs.jpg`,
+      imageUrl: `${process.env.PUBLIC_URL}/images/experience/skewed_ktcs.jpg`,
     },
     {
       title: "기지중대장/작전통제장교",
       subtitle: "대한민국 공군",
       period: "2018. 3 ~ 2021. 5",
       works: [
-        "부대의 총기탄약, 부대보급 등 전반적인 관리",
-        "다수의 병력 관리",
-        "교대근무를 진행하며 포대와 사령부에서의 중간 다리역할 수행",
+        "부대의 총기 및 탄약 관리, 물자 보급 등 종합적인 운영 관리",
+        "다수의 병력 관리 및 훈련 감독",
+        "교대근무를 통해 포대와 사령부 간 원활한 소통 및 협력 역할 수행",
       ],
-      imageUrl: `${process.env.PUBLIC_URL}/images/experience/airforce.jpg`,
+      imageUrl: `${process.env.PUBLIC_URL}/images/experience/skewed_airforce.jpg`,
     },
     {
       title: "전임강사",
       subtitle: "Messi",
       period: "2016. 3 ~ 2018. 2",
       works: [
-        "내신/수능/텝스 등의 다수의 영어 강의",
-        "수업 전 강의 계획 수립",
-        "수업을 위한 자체 교재 및 자료 제작",
+        "내신, 수능, 텝스 등 다양한 영어 강의 진행 및 학생 성과 향상 기여",
+        "효과적인 수업을 위한 세밀한 강의 계획 및 자료 준비",
+        "자체 교재 및 교육 자료 개발로 학생 맞춤형 학습 환경 조성",
       ],
-      imageUrl: `${process.env.PUBLIC_URL}/images/experience/messi.jpg`,
+      imageUrl: `${process.env.PUBLIC_URL}/images/experience/skewed_messi.jpg`,
     },
   ];
 
@@ -122,6 +122,18 @@ const Content: React.FC = () => {
     },
   ];
 
+  const [hoveredExperienceCard, setHoveredExperienceCard] = useState<
+    number | null
+  >(null);
+
+  const handleHover = (index: number) => {
+    setHoveredExperienceCard(index);
+  };
+
+  const handleLeave = () => {
+    setHoveredExperienceCard(null);
+  };
+
   return (
     <>
       <HeroBackground />
@@ -133,21 +145,31 @@ const Content: React.FC = () => {
       <RotatingImageGrid />
 
       <Title title="Experience" />
-      <div className="container mx-auto">
-        {experiences.map((experience, index) => (
-          <ExperienceCard
-            key={index}
-            title={experience.title}
-            subtitle={experience.subtitle}
-            period={experience.period}
-            works={experience.works}
-            imageUrl={experience.imageUrl}
-          />
-        ))}
+
+      <div className="container mx-auto font-title text-8xl mt-10">
+        지금까지의 커리어를
+        <br />
+        살펴보세요
       </div>
+      <Title />
+
+      {experiences.map((experience, index) => (
+        <ExperienceCard
+          key={index}
+          title={experience.title}
+          subtitle={experience.subtitle}
+          period={experience.period}
+          works={experience.works}
+          imageUrl={experience.imageUrl}
+          isHovered={hoveredExperienceCard === index}
+          onHover={() => handleHover(index)}
+          onLeave={handleLeave} // onLeave 핸들러 추가
+        />
+      ))}
+      <Title />
 
       <Title title="Projects" />
-      <div className="container mx-auto">
+      <div className="container mx-auto mt-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-8">
           {projects.map((project, index) => (
             <ProjectCard
