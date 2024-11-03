@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const images = [
-  `${process.env.PUBLIC_URL}/images/about/beef-brisket.jpeg`,
-  `${process.env.PUBLIC_URL}/images/about/hinoki-steamed.jpeg`,
-  `${process.env.PUBLIC_URL}/images/about/motsunabe.jpeg`,
-  `${process.env.PUBLIC_URL}/images/about/seafood-steamed.jpeg`,
-  `${process.env.PUBLIC_URL}/images/about/sea-snail-soup.jpeg`,
+  `${process.env.PUBLIC_URL}/images/about/beef-brisket.JPEG`,
+  `${process.env.PUBLIC_URL}/images/about/hinoki-steamed.JPEG`,
+  `${process.env.PUBLIC_URL}/images/about/motsunabe.JPEG`,
+  `${process.env.PUBLIC_URL}/images/about/seafood-steamed.JPEG`,
+  `${process.env.PUBLIC_URL}/images/about/sea-snail-soup.JPEG`,
 ];
 
 // const colors = ["red", "orange", "yellow", "green", "blue"];
