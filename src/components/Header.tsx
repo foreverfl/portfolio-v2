@@ -16,7 +16,7 @@ const Header: React.FC = () => {
   const [textColor, setTextColor] = useState("text-white");
 
   const getFlagClass = (lang: string) => {
-    switch (lang) {
+    switch (lang.toUpperCase()) {
       case "EN":
         return "fi fi-us";
       case "JP":
@@ -32,6 +32,7 @@ const Header: React.FC = () => {
   const changeLanguage = (lang: string) => {
     i18n.changeLanguage(lang);
     setLanguage(lang.toUpperCase());
+    setShowLanguageMenu(false);
   };
 
   useEffect(() => {
