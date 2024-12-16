@@ -2,11 +2,13 @@ import { Moon, Speaker, Sun } from "@geist-ui/icons";
 import "flag-icons/css/flag-icons.min.css";
 import { motion, useAnimation } from "framer-motion";
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import AudioPlayer from "./audio/AudioPlayer";
 
 const Header: React.FC = () => {
   const [darkMode, setDarkMode] = useState(false);
-  const [language, setLanguage] = useState("EN");
+  const { i18n } = useTranslation();
+  const [language, setLanguage] = useState(i18n.language);
   const [showLanguageMenu, setShowLanguageMenu] = useState(false);
   const [showAudioPopup, setShowAudioPopup] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
@@ -28,8 +30,8 @@ const Header: React.FC = () => {
 
   const toggleDarkMode = () => setDarkMode(!darkMode);
   const changeLanguage = (lang: string) => {
-    setLanguage(lang);
-    setShowLanguageMenu(false);
+    i18n.changeLanguage(lang);
+    setLanguage(lang.toUpperCase());
   };
 
   useEffect(() => {
@@ -132,19 +134,19 @@ const Header: React.FC = () => {
               <ul className="py-1">
                 <li
                   className="px-4 py-2 cursor-pointer flex items-center space-x-2"
-                  onClick={() => changeLanguage("EN")}
+                  onClick={() => changeLanguage("en")}
                 >
                   <span className="fi fi-us"></span>
                 </li>
                 <li
                   className="px-4 py-2 cursor-pointer flex items-center space-x-2"
-                  onClick={() => changeLanguage("JP")}
+                  onClick={() => changeLanguage("jp")}
                 >
                   <span className="fi fi-jp"></span>
                 </li>
                 <li
                   className="px-4 py-2 cursor-pointer flex items-center space-x-2"
-                  onClick={() => changeLanguage("KR")}
+                  onClick={() => changeLanguage("kr")}
                 >
                   <span className="fi fi-kr"></span>
                 </li>

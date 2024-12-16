@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import TypingText from "../animation/TypingText";
+import { useTranslation } from "react-i18next";
 
 const videoFiles = [
   `${process.env.PUBLIC_URL}/videos/borame-park.mp4`,
@@ -12,19 +13,13 @@ const videoFiles = [
   `${process.env.PUBLIC_URL}/videos/tera.mp4`,
 ];
 
-const videoTexts = [
-  "보라매공원",
-  "하늘공원",
-  "해운대",
-  "한라산",
-  "해운대",
-  "구로 어딘가",
-  "충남 태안",
-];
-
 const gridSize = { rows: 6, cols: 8 };
 
 const CatchPhrase: React.FC = () => {
+  const { t } = useTranslation();
+  const videoTexts = t("videoTexts", { returnObjects: true }) as string[];
+  const videoQuestion = t("videoQuestion");
+
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [showGrid, setShowGrid] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -91,7 +86,7 @@ const CatchPhrase: React.FC = () => {
 
       {/* 동영상에 따른 텍스트 */}
       <div className="absolute left-[8rem] bottom-[10rem] text-white z-20 h-20 select-none">
-        <div className="font-body pb-5">여기는 어디일까요?</div>
+        <div className="font-body pb-5">{videoQuestion}</div>
         <div className="font-title text-8xl">
           <TypingText text={videoTexts[currentVideoIndex]} />
         </div>
