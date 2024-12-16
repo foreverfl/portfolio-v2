@@ -1,0 +1,143 @@
+{
+  "videoTexts": [
+    "Borame Park",
+    "Sky Park",
+    "Haeundae Beach",
+    "Hallasan Mountain",
+    "Haeundae Beach",
+    "Somewhere in Guro",
+    "Taean, Chungcheongnam-do"
+  ],
+  "videoQuestion": "Where is this place?",
+  "about": {
+    "title": "I am Myeongkyu Jeon.",
+    "description": "Hello, my name is Myeongkyu Jeon. I majored in English Language and Literature and Japanese Language and Literature at Chung-Ang University. I worked as an English instructor for 2 years. After that, I served in the Air Force as an officer for 3 years and 3 months and was honorably discharged as a first lieutenant. After my service, I started programming through government-supported education and operated my personal development site for two years. Later, I completed KT's big data education program called 'Able School' and currently work as a full-stack engineer at KT's affiliate, KT cs. While I have mainly focused on backend and frontend development, I aim to continuously grow as a developer by applying various technologies like machine learning/deep learning, CI/CD, and blockchain to my projects."
+  },
+  "experience": {
+    "title1": "Explore my",
+    "title2": "career so far"
+  },
+  "experiences": [
+    {
+      "title": "Full-Stack Engineer",
+      "subtitle": "KT cs",
+      "period": "April 2024 ~ Present",
+      "works": [
+        "Developed a stable and scalable backend system using the Spring Framework",
+        "Implemented a dynamic frontend considering user experience with React",
+        "Designed an efficient user interface using Thymeleaf and jQuery"
+      ],
+      "imageUrl": "/images/experience/skewed_ktcs.jpg"
+    },
+    {
+      "title": "AI Engineer Trainee",
+      "subtitle": "KT Aivle School",
+      "period": "August 2023 ~ January 2024",
+      "works": [
+        "Developed personalized voice services using TTS and RVC AI modeling",
+        "Integrated backend and frontend, and managed overall code quality through reviews",
+        "Designed and developed frontend and backend systems with Django and Bootstrap",
+        "Managed project schedules and team leadership using Jira"
+      ],
+      "imageUrl": "/images/experience/skewed_aivle.jpg"
+    },
+    {
+      "title": "Base Company Commander/Operations Control Officer",
+      "subtitle": "Republic of Korea Air Force",
+      "period": "March 2018 ~ May 2021",
+      "works": [
+        "Managed comprehensive operations, including the management of weapons and ammunition supplies",
+        "Supervised training and management of a large number of personnel",
+        "Facilitated smooth communication and collaboration between units and headquarters through shift work"
+      ],
+      "imageUrl": "/images/experience/skewed_airforce.jpg"
+    },
+    {
+      "title": "Full-Time Instructor",
+      "subtitle": "Messi",
+      "period": "March 2016 ~ February 2018",
+      "works": [
+        "Delivered various English lectures, including school exams, SAT, and TEPS, contributing to improved student performance",
+        "Prepared detailed lesson plans and materials for effective teaching",
+        "Created customized learning environments by developing proprietary textbooks and materials"
+      ],
+      "imageUrl": "/images/experience/skewed_messi.jpg"
+    }
+  ],
+  "projects": [
+    {
+      "title": "My Dictionary",
+      "description": "This is the first website I created after starting development. It is a website where words can be saved to a database through a Chrome extension and studied. Spring Data JPA and Spring Security were utilized. Due to copyright issues, it has not been deployed. In the future, I plan to build a Rust and AI-based API server to provide services through extensions and apps.",
+      "techStack": [
+        "MySQL",
+        "Spring Framework",
+        "Thymeleaf",
+        "Java",
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Bootstrap"
+      ],
+      "imageUrl": "/images/projects/my_dictionary.png",
+      "githubUrl": "https://github.com/foreverfl/web-my-dictonary"
+    },
+    {
+      "title": "My Study Materials",
+      "description": "This is a website I created to systematically organize my personal study materials. It primarily organizes Linux learning materials and was operated as a service on AWS for half a year. Currently, the service has been discontinued, and I do not plan to redistribute it due to an upcoming document translation project.",
+      "techStack": [
+        "AWS",
+        "MySQL",
+        "Django",
+        "Python",
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Bootstrap"
+      ],
+      "imageUrl": "/images/projects/my_study_materials.png",
+      "githubUrl": "https://github.com/foreverfl/web-my-study-materials"
+    },
+    {
+      "title": "mogumogu's sundries",
+      "description": "This is a blog I created using React and Next.js to replace my WordPress blog, which had limited customization options. It supports multiple languages and markdown writing. Blog posts are automatically uploaded when pushed to GitHub. It is currently deployed through Vercel.",
+      "techStack": [
+        "Vercel",
+        "Cloudflare",
+        "GitHub Actions",
+        "MongoDB",
+        "Next.js",
+        "MDX",
+        "React",
+        "Framer Motion",
+        "TypeScript",
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Tailwind CSS"
+      ],
+      "imageUrl": "/images/projects/blog-3.png",
+      "videoUrl": "/videos/blog.mp4",
+      "githubUrl": "https://github.com/foreverfl/blog",
+      "siteUrl": "https://mogumogu.dev/"
+    },
+    {
+      "title": "mogumogu's docs",
+      "description": "This is a site where I compile development reference documents in one place. Some documents are directly translated and deployed on subdomains. I aim to translate all possible documents in the future. It is currently deployed on Vercel.",
+      "techStack": [
+        "Vercel",
+        "Next.js",
+        "React",
+        "Framer Motion",
+        "TypeScript",
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Tailwind CSS"
+      ],
+      "imageUrl": "/images/projects/docs-1.png",
+      "videoUrl": "/videos/docs.mp4",
+      "githubUrl": "https://github.com/foreverfl/docs",
+      "siteUrl": "https://docs.mogumogu.dev/"
+    }
+  ]
+}
