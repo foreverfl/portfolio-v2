@@ -234,7 +234,9 @@ const Content: React.FC = () => {
         {projects.map((project, index) => (
           <div
             key={index}
-            ref={(el) => (cardRefs.current[index] = el)} // 각 카드의 ref 저장
+            ref={(el: HTMLDivElement | null) => {
+              cardRefs.current[index] = el;
+            }} // 각 카드의 ref 저장
             className={`${index % 2 === 0 ? "ml-0" : "ml-auto"} w-3/4`} // 홀수는 오른쪽, 짝수는 왼쪽
           >
             <ProjectCard
