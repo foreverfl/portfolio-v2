@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { assets } from "@/hooks/useAssets";
 
+// Get images from centralized asset loader
 const images = [
-  `${process.env.PUBLIC_URL}/images/about/beef-brisket.jpeg`,
-  `${process.env.PUBLIC_URL}/images/about/hinoki-steamed.jpeg`,
-  `${process.env.PUBLIC_URL}/images/about/motsunabe.jpeg`,
-  `${process.env.PUBLIC_URL}/images/about/seafood-steamed.jpeg`,
-  `${process.env.PUBLIC_URL}/images/about/sea-snail-soup.jpeg`,
+  assets.about['beef-brisket'],
+  assets.about['hinoki-steamed'],
+  assets.about['motsunabe'],
+  assets.about['seafood-steamed'],
+  assets.about['sea-snail-soup'],
 ];
 
 // const colors = ["red", "orange", "yellow", "green", "blue"];

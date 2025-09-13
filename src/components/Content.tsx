@@ -6,6 +6,7 @@ import ProjectCard from "./contents/ProjectCard";
 import RotatingImageGrid from "./contents/RotatingImageGrid";
 import Title from "./contents/Title";
 import { useTranslation } from "react-i18next";
+import { getAssetUrl } from "@/hooks/useAssets";
 
 const Content: React.FC = () => {
   const { t } = useTranslation();
@@ -72,7 +73,7 @@ const Content: React.FC = () => {
           subtitle={experience.subtitle}
           period={experience.period}
           works={experience.works}
-          imageUrl={`${process.env.PUBLIC_URL}${experience.imageUrl}`}
+          imageUrl={getAssetUrl(experience.imageUrl)}
           isHovered={hoveredExperienceCard === index}
           onHover={() => handleHover(index)}
           onLeave={handleLeave} // onLeave 핸들러 추가
@@ -94,12 +95,8 @@ const Content: React.FC = () => {
               title={project.title}
               description={project.description}
               techStack={project.techStack}
-              imageUrl={`${process.env.PUBLIC_URL}${project.imageUrl}`}
-              videoUrl={
-                project.videoUrl
-                  ? `${process.env.PUBLIC_URL}${project.videoUrl}`
-                  : undefined
-              }
+              imageUrl={getAssetUrl(project.imageUrl)}
+              videoUrl={project.videoUrl ? getAssetUrl(project.videoUrl) : undefined}
               githubUrl={project.githubUrl}
               siteUrl={project.siteUrl}
               isLeft={index % 2 === 0}

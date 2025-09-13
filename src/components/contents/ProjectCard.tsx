@@ -1,10 +1,7 @@
 import { FileText, Github } from "@geist-ui/icons";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
-import Modal from "react-modal";
 import TechTag, { TechName } from "../atoms/TechTag";
-
-Modal.setAppElement("#root");
 
 interface ProjectCardProps {
   title: string;
@@ -130,35 +127,38 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </div>
       </div>
 
-      {/* 모달 */}
-      <Modal
-        isOpen={isOpen}
-        onRequestClose={() => setIsOpen(false)}
-        contentLabel="Image Modal"
-        style={{
-          overlay: {
-            backgroundColor: "rgba(0, 0, 0, 0.8)",
-            zIndex: 60,
-          },
-          content: {
-            overflow: "hidden",
-            border: "none",
-            background: "none",
-            inset: "50% auto auto 50%",
-            transform: "translate(-50%, -50%)",
-            maxWidth: "100%",
-            maxHeight: "100%",
-          },
-        }}
-      >
-        <div onClick={() => setIsOpen(false)} className="cursor-pointer">
-          <img
-            src={imageUrl}
-            alt={title}
-            className="w-full h-auto rounded-lg"
-          />
-        </div>
-      </Modal>
+      {/* 모달 - Framer Motion 사용 */}
+      <AnimatePresence>
+        {isOpen && (
+        <motion.div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setIsOpen(false)}
+        >
+          <motion.div
+            className="relative max-w-[90vw] max-h-[90vh]"
+            initial={{ scale: 0.8 }}
+            animate={{ scale: 1 }}
+            exit={{ scale: 0.8 }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={imageUrl}
+              alt={title}
+              className="w-full h-auto rounded-lg"
+            />
+            <button
+              onClick={() => setIsOpen(false)}
+              className="absolute top-4 right-4 text-white text-2xl hover:text-gray-300"
+            >
+              ✕
+            </button>
+          </motion.div>
+        </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

@@ -2,15 +2,17 @@ import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import TypingText from "../animation/TypingText";
 import { useTranslation } from "react-i18next";
+import { assets } from "@/hooks/useAssets";
 
+// Get videos from centralized asset loader
 const videoFiles = [
-  `${process.env.PUBLIC_URL}/videos/borame-park.mp4`,
-  `${process.env.PUBLIC_URL}/videos/sky-park.mp4`,
-  `${process.env.PUBLIC_URL}/videos/haeundae.mp4`,
-  `${process.env.PUBLIC_URL}/videos/hanra.mp4`,
-  `${process.env.PUBLIC_URL}/videos/pusan.mp4`,
-  `${process.env.PUBLIC_URL}/videos/sakura.mp4`,
-  `${process.env.PUBLIC_URL}/videos/tera.mp4`,
+  assets.videos['borame-park'],
+  assets.videos['sky-park'],
+  assets.videos['haeundae'],
+  assets.videos['hanra'],
+  assets.videos['pusan'],
+  assets.videos['sakura'],
+  assets.videos['tera'],
 ];
 
 const gridSize = { rows: 6, cols: 8 };
