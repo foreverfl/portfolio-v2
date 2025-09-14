@@ -99,7 +99,7 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <motion.div
+      <motion.header
         className={`fixed z-50 top-4 right-4 md:top-8 md:right-8 lg:top-[60px] lg:right-[80px] flex items-center space-x-2 md:space-x-4 bg-transparent ${
           isOverSection
             ? 'text-white'
@@ -110,6 +110,7 @@ const Header: React.FC = () => {
         initial={{ y: 0, opacity: 1 }}
         animate={controls}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        role="banner"
       >
         {/* 네비게이션 링크 */}
         <nav className="hidden md:flex space-x-4 lg:space-x-8 pe-2 md:pe-5">
@@ -129,6 +130,9 @@ const Header: React.FC = () => {
           <button
             onClick={() => setShowLanguageMenu(!showLanguageMenu)}
             className="p-0 m-0 border-none bg-transparent"
+            aria-label="Select language"
+            aria-expanded={showLanguageMenu}
+            aria-haspopup="true"
           >
             <span className={getFlagClass(language)}></span>
           </button>
@@ -138,18 +142,21 @@ const Header: React.FC = () => {
                 <button
                   className="p-0 m-0 border-none bg-transparent cursor-pointer hover:scale-110 transition-transform"
                   onClick={() => changeLanguage("en")}
+                  aria-label="Change language to English"
                 >
                   <span className="fi fi-us text-lg md:text-xl"></span>
                 </button>
                 <button
                   className="p-0 m-0 border-none bg-transparent cursor-pointer hover:scale-110 transition-transform"
                   onClick={() => changeLanguage("jp")}
+                  aria-label="Change language to Japanese"
                 >
                   <span className="fi fi-jp text-lg md:text-xl"></span>
                 </button>
                 <button
                   className="p-0 m-0 border-none bg-transparent cursor-pointer hover:scale-110 transition-transform"
                   onClick={() => changeLanguage("kr")}
+                  aria-label="Change language to Korean"
                 >
                   <span className="fi fi-kr text-lg md:text-xl"></span>
                 </button>
@@ -162,18 +169,20 @@ const Header: React.FC = () => {
         <button
           onClick={toggleDarkMode}
           className="p-0 m-0 border-none bg-transparent"
+          aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
         >
-          {darkMode ? <Sun /> : <Moon />}
+          {darkMode ? <Sun aria-hidden="true" /> : <Moon aria-hidden="true" />}
         </button>
 
         {/* BGM 선택 */}
         <button
           onClick={() => setShowAudioPopup(true)}
           className="p-0 m-0 border-none bg-transparent"
+          aria-label="Open audio player"
         >
-          <Speaker />
+          <Speaker aria-hidden="true" />
         </button>
-      </motion.div>
+      </motion.header>
 
       {/* 오디오 플레이어 */}
       {showAudioPopup && (

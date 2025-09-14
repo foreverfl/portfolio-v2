@@ -5,6 +5,7 @@ import TechTag, { TechName } from "../atoms/TechTag";
 import { use3DTilt } from "@/hooks/use3DTilt";
 import { useScrollReveal } from "@/hooks/useParallax";
 import { useRenderTracking, useWhyDidYouUpdate } from "@/utils/performanceProfiler";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 interface ProjectCardProps {
   title: string;
@@ -38,15 +39,18 @@ const ProjectCard: React.FC<ProjectCardProps> = React.memo(({
   const titleRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
 
+  // Check for reduced motion preference
+  const prefersReducedMotion = useReducedMotion();
+
   // Scroll reveal animation
   const scrollReveal = useScrollReveal();
 
-  // 3D tilt effect hook
+  // 3D tilt effect hook - disable for reduced motion
   const { ref: tiltRef, style: tiltStyle, glareStyle } = use3DTilt({
-    maxTilt: 10,
-    scale: 1.10,
-    speed: 400,
-    glare: true,
+    maxTilt: prefersReducedMotion ? 0 : 10,
+    scale: prefersReducedMotion ? 1 : 1.10,
+    speed: prefersReducedMotion ? 0 : 400,
+    glare: !prefersReducedMotion,
     maxGlare: 0.25,
     perspective: 1200,
   });
@@ -131,7 +135,7 @@ const ProjectCard: React.FC<ProjectCardProps> = React.memo(({
       {/* 이미지 영역 - 3D Tilt Effect with stagger animation */}
       <motion.div
         className="w-full md:w-1/2 mb-4 md:mb-0"
-        initial={{
+        initial={prefersReducedMotion ? false : {
           opacity: 0,
           x: isLeft ? -100 : 100,
           rotateY: isLeft ? 15 : -15
@@ -143,9 +147,9 @@ const ProjectCard: React.FC<ProjectCardProps> = React.memo(({
         }}
         viewport={{ once: true, margin: '-150px' }}
         transition={{
-          duration: 0.8,
+          duration: prefersReducedMotion ? 0.01 : 0.8,
           ease: [0.22, 1, 0.36, 1],
-          delay: 0.1
+          delay: prefersReducedMotion ? 0 : 0.1
         }}
       >
         <div
@@ -175,7 +179,7 @@ const ProjectCard: React.FC<ProjectCardProps> = React.memo(({
       {/* 텍스트 영역 with stagger animation */}
       <motion.div
         className="w-full md:w-1/2 flex flex-col justify-end text-sm space-y-4 p-0 md:p-4"
-        initial={{
+        initial={prefersReducedMotion ? false : {
           opacity: 0,
           x: isLeft ? 80 : -80,
           y: 30
@@ -187,10 +191,10 @@ const ProjectCard: React.FC<ProjectCardProps> = React.memo(({
         }}
         viewport={{ once: true, margin: '-100px' }}
         transition={{
-          duration: 0.7,
+          duration: prefersReducedMotion ? 0.01 : 0.7,
           ease: [0.22, 1, 0.36, 1],
-          delay: 0.3,
-          y: { duration: 0.5, delay: 0.4 }
+          delay: prefersReducedMotion ? 0 : 0.3,
+          y: { duration: prefersReducedMotion ? 0.01 : 0.5, delay: prefersReducedMotion ? 0 : 0.4 }
         }}
       >
         <div
@@ -234,9 +238,10 @@ const ProjectCard: React.FC<ProjectCardProps> = React.memo(({
             href={githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-200"
+            className="text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-md p-1"
+            aria-label={`View ${title} on GitHub`}
           >
-            <Github className="w-6 h-6 md:w-8 md:h-8 transition-transform transform hover:scale-110" />
+            <Github className="w-6 h-6 md:w-8 md:h-8 transition-transform transform hover:scale-110" aria-hidden="true" />
           </a>
           {/* Website */}
           {siteUrl && (
@@ -244,9 +249,10 @@ const ProjectCard: React.FC<ProjectCardProps> = React.memo(({
               href={siteUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-200 ml-4"
+              className="text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-200 ml-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-md p-1"
+              aria-label={`Visit ${title} website`}
             >
-              <FileText className="w-6 h-6 md:w-8 md:h-8 transition-transform transform hover:scale-110" />
+              <FileText className="w-6 h-6 md:w-8 md:h-8 transition-transform transform hover:scale-110" aria-hidden="true" />
             </a>
           )}
         </div>
@@ -273,9 +279,9 @@ const ProjectCard: React.FC<ProjectCardProps> = React.memo(({
             <button
               onClick={handleCloseModal}
               className="absolute -top-12 right-0 text-white text-3xl hover:text-gray-300 bg-black bg-opacity-50 rounded-full w-10 h-10 flex items-center justify-center transition-all hover:bg-opacity-70"
-              aria-label="Close modal"
+              aria-label="Close image modal"
             >
-              ✕
+              <span aria-hidden="true">✕</span>
             </button>
             <img
               src={imageUrl}

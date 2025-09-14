@@ -1,0 +1,133 @@
+/* Accessibility Utilities */
+
+/* Screen reader only - visually hidden but accessible */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Show on focus (for skip links, etc.) */
+.sr-only-focusable:focus,
+.sr-only-focusable:active {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Focus styles for better keyboard navigation */
+*:focus-visible {
+  outline: 3px solid var(--focus-color, #4A90E2);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Remove focus outline for mouse users */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  *:focus-visible {
+    outline-width: 4px;
+    outline-color: currentColor;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Ensure interactive elements are large enough for touch */
+button,
+a,
+input,
+select,
+textarea {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Improve readability */
+body {
+  line-height: 1.5;
+}
+
+p,
+li {
+  max-width: 70ch;
+}
+
+/* Better link visibility */
+a {
+  text-underline-offset: 0.2em;
+}
+
+a:hover,
+a:focus {
+  text-decoration-thickness: 2px;
+}
+
+/* Form accessibility */
+label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+input:invalid,
+textarea:invalid,
+select:invalid {
+  border-color: #dc3545;
+}
+
+input:valid,
+textarea:valid,
+select:valid {
+  border-color: #28a745;
+}
+
+/* Error messages */
+.error-message {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* Announcement for screen readers */
+.sr-announcement {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+[aria-live="polite"],
+[aria-live="assertive"] {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

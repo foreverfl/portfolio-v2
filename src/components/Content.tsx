@@ -62,7 +62,7 @@ const Content: React.FC = React.memo(() => {
   }, []);
 
   return (
-    <>
+    <main id="main-content" role="main">
       <HeroBackground />
 
       <Title title="About" />
@@ -122,7 +122,7 @@ const Content: React.FC = React.memo(() => {
       </Profiler>
 
       <Title />
-    </>
+    </main>
   );
 });
 

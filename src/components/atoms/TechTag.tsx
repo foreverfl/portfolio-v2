@@ -51,37 +51,37 @@ export type TechName =
 // 아이콘 매핑
 const techIcons: Record<TechName, JSX.Element> = {
   // 인프라/배포
-  Vercel: <SiVercel />,
-  Cloudflare: <SiCloudflare />,
-  "GitHub Actions": <SiGithubactions />,
-  AWS: <SiAmazonwebservices />,
+  Vercel: <SiVercel aria-hidden="true" />,
+  Cloudflare: <SiCloudflare aria-hidden="true" />,
+  "GitHub Actions": <SiGithubactions aria-hidden="true" />,
+  AWS: <SiAmazonwebservices aria-hidden="true" />,
 
   // 데이터베이스
-  MongoDB: <SiMongodb />,
-  MySQL: <SiMysql />,
-  PostgreSQL: <SiPostgresql />,
+  MongoDB: <SiMongodb aria-hidden="true" />,
+  MySQL: <SiMysql aria-hidden="true" />,
+  PostgreSQL: <SiPostgresql aria-hidden="true" />,
 
   // 백엔드
-  "Spring Framework": <SiSpring />,
-  Django: <SiDjango />,
+  "Spring Framework": <SiSpring aria-hidden="true" />,
+  Django: <SiDjango aria-hidden="true" />,
 
   // 프론트엔드
-  "Next.js": <SiNextdotjs />,
-  React: <SiReact />,
-  Thymeleaf: <SiThymeleaf />,
+  "Next.js": <SiNextdotjs aria-hidden="true" />,
+  React: <SiReact aria-hidden="true" />,
+  Thymeleaf: <SiThymeleaf aria-hidden="true" />,
 
   // 프로그래밍 언어
-  HTML: <SiHtml5 />,
-  CSS: <SiCss3 />,
-  JavaScript: <SiJavascript />,
-  TypeScript: <SiTypescript />,
-  Java: <SiOpenjdk />,
-  Python: <SiPython />,
+  HTML: <SiHtml5 aria-hidden="true" />,
+  CSS: <SiCss3 aria-hidden="true" />,
+  JavaScript: <SiJavascript aria-hidden="true" />,
+  TypeScript: <SiTypescript aria-hidden="true" />,
+  Java: <SiOpenjdk aria-hidden="true" />,
+  Python: <SiPython aria-hidden="true" />,
 
   // 스타일링
-  Bootstrap: <SiBootstrap />,
-  "Tailwind CSS": <SiTailwindcss />,
-  "Framer Motion": <SiFramer />,
+  Bootstrap: <SiBootstrap aria-hidden="true" />,
+  "Tailwind CSS": <SiTailwindcss aria-hidden="true" />,
+  "Framer Motion": <SiFramer aria-hidden="true" />,
 };
 interface TechTagProps {
   name: TechName;

@@ -1,0 +1,29 @@
+/* Screen reader only utility, but visible on focus */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;  background: #0056b3; /* WCAG AAA compliant contrast ratio */
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 0 0 4px 0;
+  z-index: 10000;
+  font-weight: 700;
+  transition: top 0.2s ease;
+  border: 2px solid white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.skip-link:focus,
+.skip-link.focused {
+  top: 0;
+  outline: 3px solid var(--focus-color, #ffd700);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .skip-link {
+    border: 2px solid white;
+  }
+}
