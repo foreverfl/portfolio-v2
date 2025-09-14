@@ -1,82 +1,34 @@
-import React, { useState, useRef } from "react";
-import ReactAudioPlayer from "react-audio-player";
-
-interface Track {
-  id: number;
-  name: string;
-  artist: string;
-  src: string;
-}
+import React from "react";
+import { useAudio } from "@/contexts/AudioContext";
 
 const AudioPlayer: React.FC<{ onClose: () => void }> = ({ onClose }) => {
-  const tracks: Track[] = [
-    {
-      id: 1,
-      name: "野良猫は宇宙を目指した",
-      artist: "しゃろう",
-      src: "https://blog_workers.forever-fl.workers.dev/portfolio-stray-cat-space.mp3",
-    },
-    {
-      id: 2,
-      name: "2_23_AM",
-      artist: "しゃろう",
-      src: "https://blog_workers.forever-fl.workers.dev/portfolio-2-23-AM.mp3",
-    },
-    {
-      id: 3,
-      name: "10℃",
-      artist: "しゃろう",
-      src: "https://blog_workers.forever-fl.workers.dev/portfolio-10-degrees.mp3",
-    },
-    {
-      id: 4,
-      name: "パステルハウス",
-      artist: "かずち",
-      src: "https://blog_workers.forever-fl.workers.dev/portfolio-pastel-house.mp3",
-    },
-    {
-      id: 5,
-      name: "神隠しの真相",
-      artist: "しゃろう",
-      src: "https://blog_workers.forever-fl.workers.dev/portfolio-kamikakushi.mp3",
-    },
-  ];
+  const {
+    tracks,
+    currentTrack,
+    isPlaying,
+    currentTime,
+    duration,
+    togglePlayPause,
+    playNext,
+    playPrevious,
+    selectTrack,
+    seek,
+  } = useAudio();
 
-  const [selectedTrack, setSelectedTrack] = useState<Track | null>(tracks[0]);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef<ReactAudioPlayer>(null);
-
-  const handleTrackSelect = (track: Track) => {
-    setSelectedTrack(track);
-    setIsPlaying(true);
+  const formatTime = (time: number) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds.toString().padStart(2, "0")}`;
   };
 
-  const togglePlayPause = () => {
-    if (isPlaying) {
-      audioRef.current?.audioEl.current?.pause();
-    } else {
-      audioRef.current?.audioEl.current?.play();
-    }
-    setIsPlaying(!isPlaying);
+  const handleProgressClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const percentage = x / rect.width;
+    seek(percentage * duration);
   };
 
-  const playNextTrack = () => {
-    const currentIndex = tracks.findIndex(
-      (track) => track.id === selectedTrack?.id
-    );
-    const nextIndex = (currentIndex + 1) % tracks.length;
-    setSelectedTrack(tracks[nextIndex]);
-    setIsPlaying(true);
-  };
-
-  const playPreviousTrack = () => {
-    const currentIndex = tracks.findIndex(
-      (track) => track.id === selectedTrack?.id
-    );
-    const previousIndex = (currentIndex - 1 + tracks.length) % tracks.length;
-    setSelectedTrack(tracks[previousIndex]);
-    setIsPlaying(true);
-  };
+  const progressPercentage = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
@@ -95,32 +47,28 @@ const AudioPlayer: React.FC<{ onClose: () => void }> = ({ onClose }) => {
           <div className="w-32 h-32 bg-blue-300 rounded-md mb-3 flex items-center justify-center">
             <span className="text-white font-bold text-2xl">🎶</span>
           </div>
-          <p className="text-lg font-medium">{selectedTrack?.name}</p>
-          <p className="text-sm text-gray-500">{selectedTrack?.artist}</p>
+          <p className="text-lg font-medium">{currentTrack?.name}</p>
+          <p className="text-sm text-gray-500">{currentTrack?.artist}</p>
         </div>
 
-        <ReactAudioPlayer
-          ref={audioRef}
-          src={selectedTrack?.src}
-          autoPlay={isPlaying}
-          controls
-          onPlay={() => setIsPlaying(true)}
-          onPause={() => setIsPlaying(false)}
-        />
-
-        <div className="w-full bg-gray-200 h-1 rounded-full my-3">
-          {/* Progress bar placeholder; can be further customized if needed */}
-          <div className="bg-blue-500 h-full w-1/3 rounded-full"></div>
+        <div
+          className="w-full bg-gray-200 h-1 rounded-full my-3 cursor-pointer"
+          onClick={handleProgressClick}
+        >
+          <div
+            className="bg-blue-500 h-full rounded-full transition-all"
+            style={{ width: `${progressPercentage}%` }}
+          ></div>
         </div>
 
         <div className="flex justify-between text-sm text-gray-500 mb-3">
-          <span>1:12</span>
-          <span>3:45</span>
+          <span>{formatTime(currentTime)}</span>
+          <span>{formatTime(duration)}</span>
         </div>
 
         <div className="flex items-center justify-center space-x-5 mb-5">
           <button
-            onClick={playPreviousTrack}
+            onClick={playPrevious}
             className="text-gray-500 hover:text-blue-500"
           >
             ⏮️
@@ -132,7 +80,7 @@ const AudioPlayer: React.FC<{ onClose: () => void }> = ({ onClose }) => {
             {isPlaying ? "⏸️" : "▶️"}
           </button>
           <button
-            onClick={playNextTrack}
+            onClick={playNext}
             className="text-gray-500 hover:text-blue-500"
           >
             ⏭️
@@ -146,9 +94,9 @@ const AudioPlayer: React.FC<{ onClose: () => void }> = ({ onClose }) => {
           {tracks.map((track) => (
             <div
               key={track.id}
-              onClick={() => handleTrackSelect(track)}
+              onClick={() => selectTrack(track)}
               className={`flex items-center p-2 mb-2 rounded-md cursor-pointer ${
-                selectedTrack?.id === track.id
+                currentTrack?.id === track.id
                   ? "bg-blue-100"
                   : "hover:bg-gray-100"
               }`}

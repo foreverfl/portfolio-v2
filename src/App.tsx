@@ -3,6 +3,7 @@ import "./App.css";
 import Content from "./components/Content";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import { AudioProvider } from "./contexts/AudioContext";
 import "./i18n";
 
 function App() {
@@ -31,11 +32,11 @@ function App() {
   }, []);
 
   return (
-    <>
+    <AudioProvider>
       <Header />
       <Content />
       <Footer />
-    </>
+    </AudioProvider>
   );
 }
 
