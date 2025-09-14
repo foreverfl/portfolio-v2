@@ -114,13 +114,13 @@ const Header: React.FC = () => {
       >
         {/* 네비게이션 링크 */}
         <nav className="hidden md:flex space-x-4 lg:space-x-8 pe-2 md:pe-5">
-          <a href="#about" className="hover:no-underline text-sm md:text-base">
+          <a href="#about" className="hover:no-underline text-sm md:text-base flex items-center h-6">
             About
           </a>
-          <a href="#experience" className="hover:no-underline text-sm md:text-base">
+          <a href="#experience" className="hover:no-underline text-sm md:text-base flex items-center h-6">
             Experience
           </a>
-          <a href="#projects" className="hover:no-underline text-sm md:text-base">
+          <a href="#projects" className="hover:no-underline text-sm md:text-base flex items-center h-6">
             Projects
           </a>
         </nav>
@@ -129,7 +129,7 @@ const Header: React.FC = () => {
         <div className="relative">
           <button
             onClick={() => setShowLanguageMenu(!showLanguageMenu)}
-            className="p-0 m-0 border-none bg-transparent"
+            className="p-0 m-0 border-none bg-transparent flex items-center h-6"
             aria-label="Select language"
             aria-expanded={showLanguageMenu}
             aria-haspopup="true"
@@ -168,7 +168,7 @@ const Header: React.FC = () => {
         {/* 다크모드 */}
         <button
           onClick={toggleDarkMode}
-          className="p-0 m-0 border-none bg-transparent"
+          className="p-0 m-0 border-none bg-transparent flex items-center h-6"
           aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
         >
           {darkMode ? <Sun aria-hidden="true" /> : <Moon aria-hidden="true" />}
@@ -177,7 +177,7 @@ const Header: React.FC = () => {
         {/* BGM 선택 */}
         <button
           onClick={() => setShowAudioPopup(true)}
-          className="p-0 m-0 border-none bg-transparent"
+          className="p-0 m-0 border-none bg-transparent flex items-center h-6"
           aria-label="Open audio player"
         >
           <Speaker aria-hidden="true" />
