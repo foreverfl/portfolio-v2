@@ -3,10 +3,11 @@ import "flag-icons/css/flag-icons.min.css";
 import { motion, useAnimation } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useTheme } from "../contexts/ThemeContext";
 import AudioPlayer from "./audio/AudioPlayer";
 
 const Header: React.FC = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const { darkMode, toggleDarkMode } = useTheme();
   const { i18n } = useTranslation();
   const [language, setLanguage] = useState(i18n.language);
   const [showLanguageMenu, setShowLanguageMenu] = useState(false);
@@ -28,7 +29,6 @@ const Header: React.FC = () => {
     }
   };
 
-  const toggleDarkMode = () => setDarkMode(!darkMode);
   const changeLanguage = (lang: string) => {
     i18n.changeLanguage(lang);
     setLanguage(lang.toUpperCase());
@@ -104,7 +104,7 @@ const Header: React.FC = () => {
   return (
     <>
       <motion.div
-        className={`fixed z-50 top-[60px] right-[80px] flex items-center space-x-4 bg-transparent ${textColor} p-2 rounded`}
+        className={`fixed z-50 top-[60px] right-[80px] flex items-center space-x-4 bg-transparent ${darkMode ? 'text-gray-200' : textColor} p-2 rounded`}
         initial={{ y: 0, opacity: 1 }}
         animate={controls}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}

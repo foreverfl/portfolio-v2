@@ -17,9 +17,20 @@ const Title: React.FC<TitleProps> = ({ title }) => {
     },
   };
 
+  const dotVariantsDark = {
+    animate: {
+      backgroundColor: ["#fff", "#aaa", "#333", "#aaa"],
+      transition: {
+        duration: 2,
+        repeat: Infinity,
+        ease: "linear",
+      },
+    },
+  };
+
   return (
     <div
-      className="container mx-auto pt-[200px] font-body"
+      className="container mx-auto pt-[200px] font-body dark:text-gray-200"
       id={title ? title.toLowerCase().replace(/\s+/g, "-") : undefined}
     >
       {title && (

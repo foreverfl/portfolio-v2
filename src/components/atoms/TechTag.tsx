@@ -86,9 +86,9 @@ interface TechTagProps {
 // 기술 스택 태그 컴포넌트
 const TechTag: React.FC<TechTagProps> = ({ name }) => {
   return (
-    <div className="flex items-center space-x-2 p-2 bg-gray-100 rounded-md shadow-sm">
-      <span className="text-blue-500">{techIcons[name]}</span>
-      <span className="text-sm font-medium">{name}</span>
+    <div className="flex items-center space-x-2 p-2 bg-gray-100 dark:bg-gray-800 rounded-md shadow-sm">
+      <span className="text-blue-600">{techIcons[name]}</span>
+      <span className="text-sm font-medium text-gray-800 dark:text-gray-200">{name}</span>
     </div>
   );
 };

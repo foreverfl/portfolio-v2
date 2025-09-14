@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class', // Enable dark mode with class strategy
   content: [
     "./src/**/*.{js,jsx,ts,tsx}", // Tailwind가 파일을 감시할 경로
   ],

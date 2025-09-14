@@ -59,7 +59,7 @@ const Content: React.FC = () => {
 
       <Title title="Experience" />
 
-      <div className="container mx-auto font-title text-8xl mt-10">
+      <div className="container mx-auto font-title text-8xl mt-10 dark:text-gray-200">
         <span>{t("experience.title1")}</span>
         <br />
         <span>{t("experience.title2")}</span>

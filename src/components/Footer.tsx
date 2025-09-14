@@ -3,7 +3,7 @@ import { Instagram, Github, FileText } from "@geist-ui/icons";
 
 const Footer: React.FC = () => {
   return (
-    <div className="text-gray-500 container mx-auto flex flex-col justify-between h-[400px]">
+    <div className="text-gray-500 dark:text-gray-400 container mx-auto flex flex-col justify-between h-[400px]">
       {/* First Footer */}
       <div className="font-text my-20">
         Loosely designed in Visual Studio Code and coded by yours truly. Built
@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
             href="https://github.com/foreverfl"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-transform transform hover:scale-110 hover:text-blue-500"
+            className="transition-transform transform hover:scale-110 hover:text-blue-500 dark:hover:text-blue-400"
           >
             <Github className="w-10 h-10" />
           </a>
@@ -29,7 +29,7 @@ const Footer: React.FC = () => {
             href="https://www.instagram.com/foreverfl/"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-transform transform hover:scale-110 hover:text-blue-500"
+            className="transition-transform transform hover:scale-110 hover:text-blue-500 dark:hover:text-blue-400"
           >
             <Instagram className="w-10 h-10" />
           </a>
@@ -39,7 +39,7 @@ const Footer: React.FC = () => {
             href="https://mogumogu.dev/"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-transform transform hover:scale-110 hover:text-blue-500"
+            className="transition-transform transform hover:scale-110 hover:text-blue-500 dark:hover:text-blue-400"
           >
             <FileText className="w-10 h-10" />
           </a>

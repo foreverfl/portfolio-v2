@@ -77,7 +77,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           {/* 밑줄 애니메이션 */}
           {isHovered && (
             <motion.div
-              className="absolute bottom-[-4px] h-[2px] bg-black"
+              className="absolute bottom-[-4px] h-[2px] bg-black dark:bg-white"
               initial={{ width: 0 }}
               animate={{ width: underlineWidth }} // a에서 b로 생성
               exit={{ width: 0, x: -underlineWidth }} // b에서 왼쪽으로 이동하며 사라지기
@@ -95,7 +95,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             />
           )}
         </div>
-        <p className="font-body text-gray-600 leading-relaxed">{description}</p>
+        <p className="font-body text-gray-600 dark:text-gray-300 leading-relaxed">{description}</p>
         <div className="flex flex-wrap gap-2">
           {techStack.map((tech) => (
             <TechTag key={tech} name={tech as TechName} />
@@ -109,7 +109,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             href={githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-600 hover:text-blue-500 transition-colors duration-200"
+            className="text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-200"
           >
             <Github className="w-8 h-8 transition-transform transform hover:scale-110" />
           </a>
@@ -119,7 +119,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               href={siteUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-blue-500 transition-colors duration-200 ml-4"
+              className="text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-200 ml-4"
             >
               <FileText className="w-8 h-8 transition-transform transform hover:scale-110" />
             </a>

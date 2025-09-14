@@ -23,7 +23,7 @@ const ExperienceCard: React.FC<
 }) => {
   return (
     <div
-      className="relative bg-white rounded-lg overflow-hidden transform -skew-y-12 h-[500px]"
+      className="relative bg-white dark:bg-gray-800 rounded-lg overflow-hidden transform -skew-y-12 h-[500px]"
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
     >
@@ -44,13 +44,13 @@ const ExperienceCard: React.FC<
       />
 
       {/* 경계선 */}
-      <div className="absolute inset-0 border-y border-dashed border-gray-300 z-10" />
+      <div className="absolute inset-0 border-y border-dashed border-gray-300 dark:border-gray-600 z-10" />
 
       {/* 텍스트 */}
       <div className="relative flex flex-col justify-end h-full p-10 z-10 font-body transform skew-y-12 select-none">
         {/* 제목 및 부제목 */}
         <div className="font-semibold text-xl mb-2">
-          <span className={`${isHovered ? "text-white" : "text-gray-600"}`}>
+          <span className={`${isHovered ? "text-white" : "text-gray-600 dark:text-gray-300"}`}>
             {title}
           </span>
           &nbsp;
@@ -66,7 +66,7 @@ const ExperienceCard: React.FC<
         {/* 기간 */}
         <div
           className={`${
-            isHovered ? "text-white" : "text-gray-500"
+            isHovered ? "text-white" : "text-gray-500 dark:text-gray-400"
           } text-lg mb-4`}
         >
           {period}
@@ -78,7 +78,7 @@ const ExperienceCard: React.FC<
             <li
               key={index}
               className={`${
-                isHovered ? "text-white" : "text-gray-800"
+                isHovered ? "text-white" : "text-gray-800 dark:text-gray-200"
               } text-lg list-inside`}
             >
               {work}
