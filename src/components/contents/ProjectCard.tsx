@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import TechTag, { TechName } from "../atoms/TechTag";
 import { use3DTilt } from "@/hooks/use3DTilt";
+import { useScrollReveal } from "@/hooks/useParallax";
 
 interface ProjectCardProps {
   title: string;
@@ -31,6 +32,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   const [isMobile, setIsMobile] = useState(false);
   const titleRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
+
+  // Scroll reveal animation
+  const scrollReveal = useScrollReveal();
 
   // 3D tilt effect hook
   const { ref: tiltRef, style: tiltStyle, glareStyle } = use3DTilt({
@@ -101,7 +105,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   };
 
   return (
-    <div
+    <motion.div
       ref={cardRef}
       className={`flex flex-col md:flex-row ${
         isLeft ? "md:flex-row" : "md:flex-row-reverse"
@@ -109,33 +113,73 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onTouchStart={handleTouchStart}
+      {...scrollReveal}
     >
-      {/* 이미지 영역 - 3D Tilt Effect */}
-      <div
-        ref={tiltRef}
-        onClick={() => setIsOpen(true)}
-        className="w-full md:w-1/2 mb-4 md:mb-0 cursor-pointer relative"
-        style={!isMobile ? tiltStyle : {}}
+      {/* 이미지 영역 - 3D Tilt Effect with stagger animation */}
+      <motion.div
+        className="w-full md:w-1/2 mb-4 md:mb-0"
+        initial={{
+          opacity: 0,
+          x: isLeft ? -100 : 100,
+          rotateY: isLeft ? 15 : -15
+        }}
+        whileInView={{
+          opacity: 1,
+          x: 0,
+          rotateY: 0
+        }}
+        viewport={{ once: true, margin: '-150px' }}
+        transition={{
+          duration: 0.8,
+          ease: [0.22, 1, 0.36, 1],
+          delay: 0.1
+        }}
       >
-        <div className="relative overflow-hidden rounded-lg shadow-xl">
-          <motion.img
-            src={imageUrl}
-            alt={title}
-            className="w-full h-full object-cover"
-            transition={{ duration: 0.3 }}
-          />
-          {/* Glare effect overlay */}
-          {!isMobile && (
-            <div
-              className="absolute inset-0 pointer-events-none transition-opacity duration-300"
-              style={glareStyle}
+        <div
+          ref={tiltRef}
+          onClick={() => setIsOpen(true)}
+          className="cursor-pointer relative"
+          style={!isMobile ? tiltStyle : {}}
+        >
+          <div className="relative overflow-hidden rounded-lg shadow-xl">
+            <motion.img
+              src={imageUrl}
+              alt={title}
+              className="w-full h-full object-cover"
+              transition={{ duration: 0.3 }}
             />
-          )}
+            {/* Glare effect overlay */}
+            {!isMobile && (
+              <div
+                className="absolute inset-0 pointer-events-none transition-opacity duration-300"
+                style={glareStyle}
+              />
+            )}
+          </div>
         </div>
-      </div>
+      </motion.div>
 
-      {/* 텍스트 영역 */}
-      <div className="w-full md:w-1/2 flex flex-col justify-end text-sm space-y-4 p-0 md:p-4">
+      {/* 텍스트 영역 with stagger animation */}
+      <motion.div
+        className="w-full md:w-1/2 flex flex-col justify-end text-sm space-y-4 p-0 md:p-4"
+        initial={{
+          opacity: 0,
+          x: isLeft ? 80 : -80,
+          y: 30
+        }}
+        whileInView={{
+          opacity: 1,
+          x: 0,
+          y: 0
+        }}
+        viewport={{ once: true, margin: '-100px' }}
+        transition={{
+          duration: 0.7,
+          ease: [0.22, 1, 0.36, 1],
+          delay: 0.3,
+          y: { duration: 0.5, delay: 0.4 }
+        }}
+      >
         <div
           className={`font-body font-semibold	text-xl md:text-2xl relative ${
             isLeft ? "text-left md:text-right" : "text-left"
@@ -193,7 +237,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             </a>
           )}
         </div>
-      </div>
+      </motion.div>
 
       {/* 모달 - Framer Motion 사용 */}
       <AnimatePresence>
@@ -229,7 +273,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 };
 

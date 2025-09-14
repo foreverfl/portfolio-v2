@@ -41,11 +41,22 @@ const ExperienceCard: React.FC<
   const highQualityImage = getHighQualityImage(id);
 
   return (
-    <div
-      className="relative bg-white dark:bg-gray-800 rounded-lg overflow-hidden transform -skew-y-12 min-h-[400px] h-auto md:h-[600px]"
-      onMouseEnter={onHover}
-      onMouseLeave={onLeave}
+    <motion.div
+      initial={{ opacity: 0, y: '50vh', scale: 0.9 }} 
+      whileInView={{ opacity: 1, y: 0, scale: 1, rotateX: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{
+        duration: 0.8,
+        ease: [0.22, 1, 0.36, 1],
+        opacity: { duration: 0.6 },
+        scale: { duration: 0.7, delay: 0.1 }
+      }}
     >
+      <div
+        className="relative bg-white dark:bg-gray-800 rounded-lg overflow-hidden transform -skew-y-12 min-h-[400px] h-auto md:h-[600px]"
+        onMouseEnter={onHover}
+        onMouseLeave={onLeave}
+      >
       {/* Background image with counter-skew to fill the skewed container */}
       <motion.div
         className="absolute -inset-y-1/2 -inset-x-10 z-0 transform skew-y-12"
@@ -109,7 +120,8 @@ const ExperienceCard: React.FC<
           </ul>
         </div>
       </div>
-    </div>
+      </div>
+    </motion.div>
   );
 };
 
