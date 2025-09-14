@@ -2,13 +2,13 @@ import { FileText, Github } from "@geist-ui/icons";
 import { AnimatePresence, motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import TechTag, { TechName } from "../atoms/TechTag";
+import { use3DTilt } from "@/hooks/use3DTilt";
 
 interface ProjectCardProps {
   title: string;
   description: string;
   techStack: string[];
   imageUrl: string;
-  videoUrl?: string;
   githubUrl: string;
   siteUrl?: string;
   isLeft: boolean;
@@ -20,7 +20,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   description,
   techStack,
   imageUrl,
-  videoUrl,
   githubUrl,
   siteUrl,
   isLeft,
@@ -32,6 +31,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   const [isMobile, setIsMobile] = useState(false);
   const titleRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
+
+  // 3D tilt effect hook
+  const { ref: tiltRef, style: tiltStyle, glareStyle } = use3DTilt({
+    maxTilt: 10,
+    scale: 1.10,
+    speed: 400,
+    glare: true,
+    maxGlare: 0.25,
+    perspective: 1200,
+  });
 
   useEffect(() => {
     // Check if mobile device
@@ -74,7 +83,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   }, [isMobile, isHovered]);
 
   const handleTouchStart = () => {
-    if (isMobile && videoUrl) {
+    if (isMobile) {
       setIsHovered(!isHovered);
     }
   };
@@ -101,24 +110,28 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       onMouseLeave={handleMouseLeave}
       onTouchStart={handleTouchStart}
     >
-      {/* 이미지 영역 */}
-      <div onClick={() => setIsOpen(true)} className="w-full md:w-1/2 mb-4 md:mb-0 cursor-pointer">
-        {videoUrl && isHovered ? (
-          <motion.video
-            src={videoUrl}
-            className="w-full h-full object-cover rounded-lg"
-            autoPlay
-            loop
-            muted
-          />
-        ) : (
+      {/* 이미지 영역 - 3D Tilt Effect */}
+      <div
+        ref={tiltRef}
+        onClick={() => setIsOpen(true)}
+        className="w-full md:w-1/2 mb-4 md:mb-0 cursor-pointer relative"
+        style={!isMobile ? tiltStyle : {}}
+      >
+        <div className="relative overflow-hidden rounded-lg shadow-xl">
           <motion.img
             src={imageUrl}
             alt={title}
-            className="w-full h-full object-cover rounded-lg"
+            className="w-full h-full object-cover"
             transition={{ duration: 0.3 }}
           />
-        )}
+          {/* Glare effect overlay */}
+          {!isMobile && (
+            <div
+              className="absolute inset-0 pointer-events-none transition-opacity duration-300"
+              style={glareStyle}
+            />
+          )}
+        </div>
       </div>
 
       {/* 텍스트 영역 */}
