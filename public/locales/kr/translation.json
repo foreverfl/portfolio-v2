@@ -19,6 +19,7 @@
   },
   "experiences": [
     {
+      "id": "ktcs",
       "title": "풀스택 엔지니어",
       "subtitle": "KT cs",
       "period": "2024. 4 ~ now",
@@ -30,6 +31,7 @@
       "imageUrl": "/images/experience/skewed_ktcs.jpg"
     },
     {
+      "id": "aivle",
       "title": "AI 엔지니어 교육생",
       "subtitle": "KT Aivle School",
       "period": "2023. 8 ~ 2024. 1",
@@ -42,6 +44,7 @@
       "imageUrl": "/images/experience/skewed_aivle.jpg"
     },
     {
+      "id": "airforce",
       "title": "기지중대장/작전통제장교",
       "subtitle": "대한민국 공군",
       "period": "2018. 3 ~ 2021. 5",
@@ -53,6 +56,7 @@
       "imageUrl": "/images/experience/skewed_airforce.jpg"
     },
     {
+      "id": "messi",
       "title": "전임강사",
       "subtitle": "Messi",
       "period": "2016. 3 ~ 2018. 2",

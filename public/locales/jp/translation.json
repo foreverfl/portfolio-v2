@@ -19,6 +19,7 @@
   },
   "experiences": [
     {
+      "id": "ktcs",
       "title": "フルスタックエンジニア",
       "subtitle": "KT cs",
       "period": "2024年4月 ~ 現在",
@@ -30,6 +31,7 @@
       "imageUrl": "/images/experience/skewed_ktcs.jpg"
     },
     {
+      "id": "aivle",
       "title": "AIエンジニア研修生",
       "subtitle": "KT Aivle School",
       "period": "2023年8月 ~ 2024年1月",
@@ -42,6 +44,7 @@
       "imageUrl": "/images/experience/skewed_aivle.jpg"
     },
     {
+      "id": "airforce",
       "title": "基地中隊長・作戦統制将校",
       "subtitle": "大韓民国空軍",
       "period": "2018年3月 ~ 2021年5月",
@@ -53,6 +56,7 @@
       "imageUrl": "/images/experience/skewed_airforce.jpg"
     },
     {
+      "id": "messi",
       "title": "専任講師",
       "subtitle": "Messi",
       "period": "2016年3月 ~ 2018年2月",

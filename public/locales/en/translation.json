@@ -19,6 +19,7 @@
   },
   "experiences": [
     {
+      "id": "ktcs",
       "title": "Full-Stack Engineer",
       "subtitle": "KT cs",
       "period": "April 2024 ~ Present",
@@ -30,6 +31,7 @@
       "imageUrl": "/images/experience/skewed_ktcs.jpg"
     },
     {
+      "id": "aivle",
       "title": "AI Engineer Trainee",
       "subtitle": "KT Aivle School",
       "period": "August 2023 ~ January 2024",
@@ -42,6 +44,7 @@
       "imageUrl": "/images/experience/skewed_aivle.jpg"
     },
     {
+      "id": "airforce",
       "title": "Base Company Commander/Operations Control Officer",
       "subtitle": "Republic of Korea Air Force",
       "period": "March 2018 ~ May 2021",
@@ -53,6 +56,7 @@
       "imageUrl": "/images/experience/skewed_airforce.jpg"
     },
     {
+      "id": "messi",
       "title": "Full-Time Instructor",
       "subtitle": "Messi",
       "period": "March 2016 ~ February 2018",

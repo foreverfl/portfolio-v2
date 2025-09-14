@@ -6,6 +6,7 @@ import airforceImage from "@/assets/images/experience/airforce.jpg";
 import messiImage from "@/assets/images/experience/messi.jpg";
 
 interface CardProps {
+  id: string;
   title: string;
   subtitle: string;
   period: string;
@@ -16,6 +17,7 @@ interface CardProps {
 const ExperienceCard: React.FC<
   CardProps & { isHovered: boolean; onHover: () => void; onLeave: () => void }
 > = ({
+  id,
   title,
   subtitle,
   period,
@@ -25,18 +27,19 @@ const ExperienceCard: React.FC<
   onHover,
   onLeave,
 }) => {
-  // Local high-quality images mapping
-  const getHighQualityImage = (subtitle: string) => {
+  // Local high-quality images mapping using ID (language-independent)
+  const getHighQualityImage = (id: string) => {
     const imageMap: { [key: string]: string } = {
-      "KT cs": ktcsImage,
-      "KT Aivle School": aivleImage,
-      "대한민국 공군": airforceImage,
-      "Messi": messiImage
+      "ktcs": ktcsImage,
+      "aivle": aivleImage,
+      "airforce": airforceImage,
+      "messi": messiImage
     };
-    return imageMap[subtitle] || imageUrl;
+    console.log('ID received:', id, 'Image mapped:', imageMap[id]);
+    return imageMap[id] || imageUrl;
   };
 
-  const highQualityImage = getHighQualityImage(subtitle);
+  const highQualityImage = getHighQualityImage(id);
 
   return (
     <div

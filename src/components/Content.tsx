@@ -11,6 +11,7 @@ import { getAssetUrl } from "@/hooks/useAssets";
 const Content: React.FC = () => {
   const { t } = useTranslation();
   const experiences = t("experiences", { returnObjects: true }) as Array<{
+    id: string;
     title: string;
     subtitle: string;
     period: string;
@@ -69,6 +70,7 @@ const Content: React.FC = () => {
       {experiences.map((experience, index) => (
         <ExperienceCard
           key={index}
+          id={experience.id}
           title={experience.title}
           subtitle={experience.subtitle}
           period={experience.period}
