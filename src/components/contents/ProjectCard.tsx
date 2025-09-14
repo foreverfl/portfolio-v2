@@ -1,9 +1,10 @@
 import { FileText, Github } from "@geist-ui/icons";
 import { AnimatePresence, motion } from "framer-motion";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import TechTag, { TechName } from "../atoms/TechTag";
 import { use3DTilt } from "@/hooks/use3DTilt";
 import { useScrollReveal } from "@/hooks/useParallax";
+import { useRenderTracking, useWhyDidYouUpdate } from "@/utils/performanceProfiler";
 
 interface ProjectCardProps {
   title: string;
@@ -13,10 +14,9 @@ interface ProjectCardProps {
   githubUrl: string;
   siteUrl?: string;
   isLeft: boolean;
-  maxHeight: number;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({
+const ProjectCard: React.FC<ProjectCardProps> = React.memo(({
   title,
   description,
   techStack,
@@ -24,8 +24,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   githubUrl,
   siteUrl,
   isLeft,
-  maxHeight,
 }) => {
+  // Performance tracking
+  const renderCount = useRenderTracking(`ProjectCard-${title}`);
+  useWhyDidYouUpdate(`ProjectCard-${title}`, {
+    title, description, techStack, imageUrl, githubUrl, siteUrl, isLeft
+  });
+
   const [isHovered, setIsHovered] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [underlineWidth, setUnderlineWidth] = useState(0);
@@ -86,23 +91,31 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     };
   }, [isMobile, isHovered]);
 
-  const handleTouchStart = () => {
+  const handleTouchStart = useCallback(() => {
     if (isMobile) {
-      setIsHovered(!isHovered);
+      setIsHovered(prev => !prev);
     }
-  };
+  }, [isMobile]);
 
-  const handleMouseEnter = () => {
+  const handleMouseEnter = useCallback(() => {
     if (!isMobile) {
       setIsHovered(true);
     }
-  };
+  }, [isMobile]);
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = useCallback(() => {
     if (!isMobile) {
       setIsHovered(false);
     }
-  };
+  }, [isMobile]);
+
+  const handleImageClick = useCallback(() => {
+    setIsOpen(true);
+  }, []);
+
+  const handleCloseModal = useCallback(() => {
+    setIsOpen(false);
+  }, []);
 
   return (
     <motion.div
@@ -137,7 +150,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       >
         <div
           ref={tiltRef}
-          onClick={() => setIsOpen(true)}
+          onClick={handleImageClick}
           className="cursor-pointer relative"
           style={!isMobile ? tiltStyle : {}}
         >
@@ -247,7 +260,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          onClick={() => setIsOpen(false)}
+          onClick={handleCloseModal}
         >
           <motion.div
             className="relative"
@@ -258,7 +271,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           >
             {/* Close button - positioned outside the image */}
             <button
-              onClick={() => setIsOpen(false)}
+              onClick={handleCloseModal}
               className="absolute -top-12 right-0 text-white text-3xl hover:text-gray-300 bg-black bg-opacity-50 rounded-full w-10 h-10 flex items-center justify-center transition-all hover:bg-opacity-70"
               aria-label="Close modal"
             >
@@ -275,6 +288,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       </AnimatePresence>
     </motion.div>
   );
-};
+});
+
+ProjectCard.displayName = 'ProjectCard';
 
 export default ProjectCard;

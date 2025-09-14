@@ -1,9 +1,31 @@
-import { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useTheme } from "../contexts/ThemeContext";
 
-export function ScrollProgress() {
+export const ScrollProgress = React.memo(() => {
   const [width, setWidth] = useState(0);
   const { darkMode } = useTheme();
+
+  // Throttle function for performance
+  const throttle = useCallback((func: Function, delay: number) => {
+    let lastCall = 0;
+    let timeoutId: NodeJS.Timeout | null = null;
+
+    return (...args: any[]) => {
+      const now = Date.now();
+
+      if (now - lastCall >= delay) {
+        lastCall = now;
+        func(...args);
+      } else {
+        // Schedule the final call
+        if (timeoutId) clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => {
+          lastCall = Date.now();
+          func(...args);
+        }, delay - (now - lastCall));
+      }
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,15 +36,18 @@ export function ScrollProgress() {
       setWidth(scrollPercent);
     };
 
+    // Throttled scroll handler (16ms ≈ 60fps)
+    const throttledScroll = throttle(handleScroll, 16);
+
     // Initial calculation
     handleScroll();
 
     // Add scroll listener
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("scroll", throttledScroll, { passive: true });
 
     // Cleanup
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    return () => window.removeEventListener("scroll", throttledScroll);
+  }, [throttle]);
 
   return (
     <div
@@ -43,4 +68,6 @@ export function ScrollProgress() {
       }}
     />
   );
-}
+});
+
+ScrollProgress.displayName = 'ScrollProgress';

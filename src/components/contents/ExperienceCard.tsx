@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 import ktcsImage from "@/assets/images/experience/ktcs.jpg";
 import aivleImage from "@/assets/images/experience/aivle.jpg";
 import airforceImage from "@/assets/images/experience/airforce.jpg";
 import messiImage from "@/assets/images/experience/messi.jpg";
+import { useRenderTracking, useWhyDidYouUpdate } from "@/utils/performanceProfiler";
 
 interface CardProps {
   id: string;
@@ -16,7 +17,7 @@ interface CardProps {
 
 const ExperienceCard: React.FC<
   CardProps & { isHovered: boolean; onHover: () => void; onLeave: () => void }
-> = ({
+> = React.memo(({
   id,
   title,
   subtitle,
@@ -27,8 +28,14 @@ const ExperienceCard: React.FC<
   onHover,
   onLeave,
 }) => {
+  // Performance tracking
+  const renderCount = useRenderTracking(`ExperienceCard-${id}`);
+  useWhyDidYouUpdate(`ExperienceCard-${id}`, {
+    id, title, subtitle, period, works, imageUrl, isHovered, onHover, onLeave
+  });
+
   // Local high-quality images mapping using ID (language-independent)
-  const getHighQualityImage = (id: string) => {
+  const highQualityImage = useMemo(() => {
     const imageMap: { [key: string]: string } = {
       "ktcs": ktcsImage,
       "aivle": aivleImage,
@@ -36,9 +43,7 @@ const ExperienceCard: React.FC<
       "messi": messiImage
     };
     return imageMap[id] || imageUrl;
-  };
-
-  const highQualityImage = getHighQualityImage(id);
+  }, [id, imageUrl]);
 
   return (
     <motion.div
@@ -123,6 +128,8 @@ const ExperienceCard: React.FC<
       </div>
     </motion.div>
   );
-};
+});
+
+ExperienceCard.displayName = 'ExperienceCard';
 
 export default ExperienceCard;
