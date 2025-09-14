@@ -29,7 +29,7 @@
         "Implemented a dynamic frontend considering user experience with React",
         "Designed an efficient user interface using Thymeleaf and jQuery"
       ],
-      "imageUrl": "/images/experience/skewed_ktcs.jpg"
+      "imageUrl": "/images/experience/skewed_ktcs.webp"
     },
     {
       "id": "aivle",
@@ -42,7 +42,7 @@
         "Designed and developed frontend and backend systems with Django and Bootstrap",
         "Managed project schedules and team leadership using Jira"
       ],
-      "imageUrl": "/images/experience/skewed_aivle.jpg"
+      "imageUrl": "/images/experience/skewed_aivle.webp"
     },
     {
       "id": "airforce",
@@ -54,7 +54,7 @@
         "Supervised training and management of a large number of personnel",
         "Facilitated smooth communication and collaboration between units and headquarters through shift work"
       ],
-      "imageUrl": "/images/experience/skewed_airforce.jpg"
+      "imageUrl": "/images/experience/skewed_airforce.webp"
     },
     {
       "id": "messi",
@@ -66,7 +66,7 @@
         "Prepared detailed lesson plans and materials for effective teaching",
         "Created customized learning environments by developing proprietary textbooks and materials"
       ],
-      "imageUrl": "/images/experience/skewed_messi.jpg"
+      "imageUrl": "/images/experience/skewed_messi.webp"
     }
   ],
   "projects": [
@@ -83,7 +83,7 @@
         "CSS",
         "Bootstrap"
       ],
-      "imageUrl": "/images/projects/my_dictionary.png",
+      "imageUrl": "/images/projects/my_dictionary.webp",
       "githubUrl": "https://github.com/foreverfl/web-my-dictonary"
     },
     {
@@ -99,7 +99,7 @@
         "CSS",
         "Bootstrap"
       ],
-      "imageUrl": "/images/projects/my_study_materials.png",
+      "imageUrl": "/images/projects/my_study_materials.webp",
       "githubUrl": "https://github.com/foreverfl/web-my-study-materials"
     },
     {
@@ -120,7 +120,7 @@
         "CSS",
         "Tailwind CSS"
       ],
-      "imageUrl": "/images/projects/blog-3.png",
+      "imageUrl": "/images/projects/blog-3.webp",
       "videoUrl": "/videos/blog.mp4",
       "githubUrl": "https://github.com/foreverfl/blog",
       "siteUrl": "https://mogumogu.dev/"
@@ -139,7 +139,7 @@
         "CSS",
         "Tailwind CSS"
       ],
-      "imageUrl": "/images/projects/docs-1.png",
+      "imageUrl": "/images/projects/docs-1.webp",
       "videoUrl": "/videos/docs.mp4",
       "githubUrl": "https://github.com/foreverfl/docs",
       "siteUrl": "https://docs.mogumogu.dev/"
