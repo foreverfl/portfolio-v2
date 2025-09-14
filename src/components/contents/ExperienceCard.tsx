@@ -1,5 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
+import ktcsImage from "@/assets/images/experience/ktcs.jpg";
+import aivleImage from "@/assets/images/experience/aivle.jpg";
+import airforceImage from "@/assets/images/experience/airforce.jpg";
+import messiImage from "@/assets/images/experience/messi.jpg";
 
 interface CardProps {
   title: string;
@@ -21,19 +25,33 @@ const ExperienceCard: React.FC<
   onHover,
   onLeave,
 }) => {
+  // Local high-quality images mapping
+  const getHighQualityImage = (subtitle: string) => {
+    const imageMap: { [key: string]: string } = {
+      "KT cs": ktcsImage,
+      "KT Aivle School": aivleImage,
+      "대한민국 공군": airforceImage,
+      "Messi": messiImage
+    };
+    return imageMap[subtitle] || imageUrl;
+  };
+
+  const highQualityImage = getHighQualityImage(subtitle);
+
   return (
     <div
       className="relative bg-white dark:bg-gray-800 rounded-lg overflow-hidden transform -skew-y-12 h-[500px]"
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
     >
-      {/* 배경 이미지 */}
+      {/* Background image with counter-skew to fill the skewed container */}
       <motion.div
-        className="absolute inset-0 z-0"
+        className="absolute -inset-y-1/2 -inset-x-10 z-0 transform skew-y-12"
         style={{
-          backgroundImage: isHovered ? `url(${imageUrl})` : "none",
+          backgroundImage: isHovered ? `url(${highQualityImage})` : "none",
           backgroundSize: "cover",
           backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
           filter: isHovered ? "brightness(30%)" : "none",
         }}
         initial={{ opacity: 0 }}
