@@ -14,7 +14,7 @@ const Header: React.FC = () => {
   const [showAudioPopup, setShowAudioPopup] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const controls = useAnimation();
-  const [textColor, setTextColor] = useState("text-white");
+  const [isOverSection, setIsOverSection] = useState(false);
 
   const getFlagClass = (lang: string) => {
     switch (lang.toUpperCase()) {
@@ -49,11 +49,7 @@ const Header: React.FC = () => {
           }
         });
 
-        if (isAnySectionVisible) {
-          setTextColor("text-black");
-        } else {
-          setTextColor("text-white");
-        }
+        setIsOverSection(isAnySectionVisible);
       },
       {
         threshold: 0.1,
@@ -104,7 +100,13 @@ const Header: React.FC = () => {
   return (
     <>
       <motion.div
-        className={`fixed z-50 top-[60px] right-[80px] flex items-center space-x-4 bg-transparent ${darkMode ? 'text-gray-200' : textColor} p-2 rounded`}
+        className={`fixed z-50 top-[60px] right-[80px] flex items-center space-x-4 bg-transparent ${
+          isOverSection
+            ? 'text-white'
+            : darkMode
+              ? 'text-white'
+              : 'text-black'
+        } p-2 rounded transition-colors duration-300`}
         initial={{ y: 0, opacity: 1 }}
         animate={controls}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
