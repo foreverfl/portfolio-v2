@@ -29,7 +29,23 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   const [isHovered, setIsHovered] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [underlineWidth, setUnderlineWidth] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const titleRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Check if mobile device
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia('(max-width: 768px)').matches ||
+                  'ontouchstart' in window ||
+                  navigator.maxTouchPoints > 0);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     if (titleRef.current) {
@@ -38,13 +54,52 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     }
   }, [title]);
 
+  useEffect(() => {
+    // Handle click outside for mobile
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      if (isMobile && isHovered && cardRef.current && !cardRef.current.contains(event.target as Node)) {
+        setIsHovered(false);
+      }
+    };
+
+    if (isMobile) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('touchstart', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, [isMobile, isHovered]);
+
+  const handleTouchStart = () => {
+    if (isMobile && videoUrl) {
+      setIsHovered(!isHovered);
+    }
+  };
+
+  const handleMouseEnter = () => {
+    if (!isMobile) {
+      setIsHovered(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (!isMobile) {
+      setIsHovered(false);
+    }
+  };
+
   return (
     <div
+      ref={cardRef}
       className={`flex flex-col md:flex-row ${
         isLeft ? "md:flex-row" : "md:flex-row-reverse"
       } items-center p-4 md:p-6 lg:p-8 my-4 md:my-6`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onTouchStart={handleTouchStart}
     >
       {/* 이미지 영역 */}
       <div onClick={() => setIsOpen(true)} className="w-full md:w-1/2 mb-4 md:mb-0 cursor-pointer">
