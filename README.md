@@ -1,46 +1,144 @@
-# Getting Started with Create React App
+# 🎨 Portfolio V2
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+  <img src="https://img.shields.io/badge/React-19.0.0-61DAFB?style=for-the-badge&logo=react&logoColor=white" />
+  <img src="https://img.shields.io/badge/TypeScript-5.7.2-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
+  <img src="https://img.shields.io/badge/Vite-7.1.5-646CFF?style=for-the-badge&logo=vite&logoColor=white" />
+  <img src="https://img.shields.io/badge/TailwindCSS-3.4.16-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" />
+</div>
 
-## Available Scripts
+## 📖 Introduction
 
-In the project directory, you can run:
+An interactive portfolio website built with React and TypeScript. Features multilingual support, dark mode, BGM player, and various user experience enhancements.
 
-### `npm start`
+### ✨ Key Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- 🌏 **Multilingual Support** (English/Korean/Japanese)
+- 🌓 **Dark Mode** Toggle
+- 🎵 **BGM Player** (Music Selection Available)
+- 📱 **Responsive Design**
+- ⚡ **Vite-based** Fast Development Environment
+- 🎨 **Animations** (Framer Motion, GSAP)
+- 🖼️ **Dynamic Image Grid**
+- ⌨️ **Typing Animation**
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 🛠 Tech Stack
 
-### `npm test`
+### Core
+- **React 19.0.0** - Latest React version
+- **TypeScript 5.7.2** - Type safety
+- **Vite 7.1.5** - Fast build and HMR
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Styling
+- **TailwindCSS 3.4.16** - Utility-first CSS framework
+- **PostCSS** - CSS preprocessing
+- **Various Fonts** (@fontsource packages)
 
-### `npm run build`
+### Animation & UX
+- **Framer Motion 11.15.0** - React animation library
+- **GSAP 3.12.5** - Advanced animations
+- **React Icons 5.4.0** - Icon library
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Internationalization
+- **i18next 24.1.0** - Multilingual support
+- **react-i18next 15.2.0** - React integration
+- **i18next-browser-languagedetector** - Browser language detection
+- **i18next-http-backend** - Translation file loading
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Others
+- **React Audio Player** - Audio playback
+- **Flag Icons** - Country flag icons
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 📁 Project Structure
 
-### `npm run eject`
+```
+portfolio-v2/
+├── public/
+│   ├── assets/          # Images, videos, audio files
+│   └── locales/         # Translation files (en/kr/jp)
+├── src/
+│   ├── components/      # React components
+│   │   ├── animation/   # Animation components
+│   │   ├── atoms/       # Basic UI components
+│   │   ├── audio/       # Audio-related components
+│   │   └── contents/    # Content components
+│   ├── contexts/        # React Context (theme, audio)
+│   ├── hooks/           # Custom hooks
+│   ├── App.tsx          # Main app component
+│   ├── i18n.ts          # i18n configuration
+│   └── index.tsx        # Entry point
+├── vite.config.ts       # Vite configuration
+├── tailwind.config.js   # TailwindCSS configuration
+└── package.json         # Project dependencies
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 🚀 Getting Started
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Requirements
+- Node.js 18+
+- npm or yarn
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Installation & Running
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+# Install dependencies
+npm install
 
-## Learn More
+# Run development server (http://localhost:3000)
+npm run dev
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Production build
+npm run build
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Preview build
+npm run preview
+
+# Deploy to GitHub Pages
+npm run deploy
+```
+
+## 🎯 Main Components
+
+### Header
+- Navigation menu
+- Language selector
+- Dark mode toggle
+- BGM player controls
+- Scroll-responsive header
+
+### Content
+- About Section (Catchphrase, Rotating image grid)
+- Experience Section (Career cards)
+- Projects Section (Project cards)
+
+### Context Providers
+- **ThemeContext**: Dark mode state management
+- **AudioContext**: BGM playback state management
+
+## 🌟 Features
+
+### Performance Optimization
+- Fast build and HMR with Vite
+- Code splitting
+- Image optimization
+
+### User Experience
+- Smooth scroll animations
+- Interactive hover effects
+- Responsive layout
+- Accessibility considerations
+
+### Developer Experience
+- TypeScript type safety
+- Modular component structure
+- Reusable custom hooks
+- Clear folder structure
+
+## 📝 License
+
+This project was created for personal portfolio use.
+
+## 🔗 Links
+
+- [Live Demo](https://foreverfl.github.io/portfolio-v2)
+- [GitHub Repository](https://github.com/foreverfl/portfolio-v2)
