@@ -67,7 +67,7 @@ const AudioPlayer: React.FC<{ onClose: () => void }> = ({ onClose }) => {
           onClick={handleProgressClick}
         >
           <div
-            className="bg-blue-500 h-full rounded-full transition-all"
+            className="bg-gradient-to-r from-blue-500 to-purple-500 h-full rounded-full transition-all"
             style={{ width: `${progressPercentage}%` }}
           ></div>
         </div>
