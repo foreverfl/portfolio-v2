@@ -36,7 +36,9 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "lighthouse": "node scripts/lighthouse.js",
+    "lighthouse:mobile": "node scripts/lighthouse.js --mobile"
   },
   "eslintConfig": {
     "extends": [
@@ -63,11 +65,20 @@
     "@vitejs/plugin-react": "^5.0.2",
     "autoprefixer": "^10.4.20",
     "axe-playwright": "^2.2.2",
+    "critters": "^0.0.23",
     "gh-pages": "^6.3.0",
+    "glob": "^11.0.3",
+    "lighthouse": "^12.8.2",
     "playwright": "^1.55.0",
     "postcss": "^8.4.49",
+    "sharp": "^0.34.3",
     "tailwindcss": "^3.4.16",
+    "terser": "^5.44.0",
     "vite": "^7.1.5",
-    "vite-plugin-svgr": "^4.5.0"
+    "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-imagemin": "^0.6.1",
+    "vite-plugin-pwa": "^1.0.3",
+    "vite-plugin-svgr": "^4.5.0",
+    "workbox-window": "^7.3.0"
   }
 }

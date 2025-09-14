@@ -1,0 +1,36 @@
+/* Font face declarations with font-display: swap for better performance */
+@font-face {
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/NotoSansKR-Regular.woff2') format('woff2'),
+       url('/fonts/NotoSansKR-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/NotoSansKR-Bold.woff2') format('woff2'),
+       url('/fonts/NotoSansKR-Bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Roboto-Regular.woff2') format('woff2'),
+       url('/fonts/Roboto-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/Roboto-Bold.woff2') format('woff2'),
+       url('/fonts/Roboto-Bold.woff') format('woff');
+}

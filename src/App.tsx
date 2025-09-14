@@ -1,15 +1,17 @@
 import "./App.css";
 import "./styles/accessibility.css";
-import Content from "./components/Content";
-import Footer from "./components/Footer";
+import { lazy, Suspense, useEffect } from "react";
 import Header from "./components/Header";
 import { ScrollProgress } from "./components/ScrollProgress";
 import { SkipLink } from "./components/SkipLink";
 import { AudioProvider } from "./contexts/AudioContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import "./i18n";
-import { useEffect } from "react";
 import { logPerformanceReport } from "./utils/performanceProfiler";
+
+// Lazy load components for better performance
+const Content = lazy(() => import("./components/Content"));
+const Footer = lazy(() => import("./components/Footer"));
 
 function App() {
   useEffect(() => {
@@ -46,8 +48,14 @@ function App() {
         <SkipLink />
         <ScrollProgress />
         <Header />
-        <Content />
-        <Footer />
+        <Suspense fallback={
+          <div className="flex justify-center items-center min-h-screen">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+          </div>
+        }>
+          <Content />
+          <Footer />
+        </Suspense>
       </AudioProvider>
     </ThemeProvider>
   );
