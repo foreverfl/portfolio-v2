@@ -4,9 +4,9 @@ import svgr from 'vite-plugin-svgr';
 import path from 'path';
 
 // https://vitejs.dev/config/
-export default defineConfig(({ command }) => ({
+export default defineConfig(({ command, mode }) => ({
   plugins: [react(), svgr()],
-  base: command === 'build' ? '/portfolio-v2/' : '/', // dev=/, build=/portfolio-v2/
+  base: command === 'serve' && mode === 'development' ? '/' : '/portfolio-v2/', // dev=/, build&preview=/portfolio-v2/
   publicDir: 'public',
   resolve: {
     alias: {

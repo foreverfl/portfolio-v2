@@ -9,8 +9,18 @@ import { useTranslation } from "react-i18next";
 import { getAssetUrl } from "@/hooks/useAssets";
 
 const Content: React.FC = () => {
-  const { t } = useTranslation();
-  const experiences = t("experiences", { returnObjects: true }) as Array<{
+  const { t, ready } = useTranslation();
+
+  // Wait for translations to be ready
+  if (!ready) {
+    return <div>Loading...</div>;
+  }
+
+  const experiencesData = t("experiences", { returnObjects: true });
+  const projectsData = t("projects", { returnObjects: true });
+
+  // Type check and provide fallback
+  const experiences = (Array.isArray(experiencesData) ? experiencesData : []) as Array<{
     id: string;
     title: string;
     subtitle: string;
@@ -19,7 +29,7 @@ const Content: React.FC = () => {
     imageUrl: string;
   }>;
 
-  const projects = t("projects", { returnObjects: true }) as Array<{
+  const projects = (Array.isArray(projectsData) ? projectsData : []) as Array<{
     title: string;
     description: string;
     techStack: string[];
@@ -37,8 +47,10 @@ const Content: React.FC = () => {
 
   useEffect(() => {
     const heights = cardRefs.current.map((ref) => ref?.clientHeight || 0);
-    setMaxProjectCardHeight(Math.max(...heights));
-  }, [projects.length]);
+    if (heights.length > 0) {
+      setMaxProjectCardHeight(Math.max(...heights));
+    }
+  }, [projects?.length]);
 
   const handleHover = (index: number) => {
     setHoveredExperienceCard(index);

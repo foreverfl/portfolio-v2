@@ -10,7 +10,7 @@ i18n
   .init({
     fallbackLng: "jp",
     supportedLngs: ["en", "kr", "jp"],
-    debug: true, // 디버그 활성화 (개발 중에만)
+    debug: false, // Disable debug logs in production
     interpolation: {
       escapeValue: false, // React에서 XSS 보호를 제공
     },
