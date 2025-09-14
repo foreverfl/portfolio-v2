@@ -47,10 +47,13 @@ const Content: React.FC = React.memo(() => {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    const heights = cardRefs.current.map((ref) => ref?.clientHeight || 0);
-    if (heights.length > 0) {
-      setMaxProjectCardHeight(Math.max(...heights));
-    }
+    // Use requestAnimationFrame to avoid forced reflow
+    requestAnimationFrame(() => {
+      const heights = cardRefs.current.map((ref) => ref?.clientHeight || 0);
+      if (heights.length > 0) {
+        setMaxProjectCardHeight(Math.max(...heights));
+      }
+    });
   }, [projects?.length]);
 
   const handleHover = useCallback((index: number) => {

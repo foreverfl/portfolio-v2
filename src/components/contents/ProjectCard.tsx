@@ -287,6 +287,8 @@ const ProjectCard: React.FC<ProjectCardProps> = React.memo(({
               src={imageUrl}
               alt={title}
               className="max-w-[90vw] max-h-[85vh] w-auto h-auto rounded-lg"
+              loading="lazy"
+              decoding="async"
             />
           </motion.div>
         </motion.div>

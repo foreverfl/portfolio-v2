@@ -51,6 +51,10 @@ const AudioPlayer: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                 src={currentTrack.albumArt}
                 alt={currentTrack.name}
                 className="w-full h-full object-cover"
+                loading="eager"
+                decoding="async"
+                width={128}
+                height={128}
               />
             ) : (
               <div className="w-full h-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
@@ -118,6 +122,10 @@ const AudioPlayer: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                     src={track.albumArt}
                     alt={track.name}
                     className="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                    width={32}
+                    height={32}
                   />
                 ) : (
                   <div className="w-full h-full bg-gradient-to-br from-blue-300 to-purple-400 flex items-center justify-center">

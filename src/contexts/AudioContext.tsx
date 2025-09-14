@@ -6,11 +6,11 @@ import pastelHouse from "@/assets/audio/パステルハウス.mp3";
 import kamikakushi from "@/assets/audio/神隠しの真相.mp3";
 
 // Album art imports
-import strayCatSpaceImg from "@/assets/images/audio/野良猫は宇宙を目指した.jpg";
-import twoTwentyThreeAmImg from "@/assets/images/audio/2_23_AM.jpg";
-import tenDegreesImg from "@/assets/images/audio/10℃.jpg";
-import pastelHouseImg from "@/assets/images/audio/パステルハウス.jpg";
-import kamikakushiImg from "@/assets/images/audio/神隠しの真相.jpg";
+import strayCatSpaceImg from "@/assets/images/audio/野良猫は宇宙を目指した.webp";
+import twoTwentyThreeAmImg from "@/assets/images/audio/2_23_AM.webp";
+import tenDegreesImg from "@/assets/images/audio/10℃.webp";
+import pastelHouseImg from "@/assets/images/audio/パステルハウス.webp";
+import kamikakushiImg from "@/assets/images/audio/神隠しの真相.webp";
 
 export interface Track {
   id: number;

@@ -1,9 +1,9 @@
 import React, { useMemo } from "react";
 import { motion } from "framer-motion";
-import ktcsImage from "@/assets/images/experience/ktcs.jpg";
-import aivleImage from "@/assets/images/experience/aivle.jpg";
-import airforceImage from "@/assets/images/experience/airforce.jpg";
-import messiImage from "@/assets/images/experience/messi.jpg";
+import ktcsImage from "@/assets/images/experience/ktcs.webp";
+import aivleImage from "@/assets/images/experience/aivle.webp";
+import airforceImage from "@/assets/images/experience/airforce.webp";
+import messiImage from "@/assets/images/experience/messi.webp";
 import { useRenderTracking, useWhyDidYouUpdate } from "@/utils/performanceProfiler";
 
 interface CardProps {

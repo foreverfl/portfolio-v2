@@ -29,7 +29,7 @@
         "Reactを使用して、ユーザー体験を考慮した動的なフロントエンドを実装",
         "ThymeleafとjQueryを使用し、効率的なユーザーインターフェースを設計"
       ],
-      "imageUrl": "/images/experience/skewed_ktcs.jpg"
+      "imageUrl": "/images/experience/skewed_ktcs.webp"
     },
     {
       "id": "aivle",
@@ -42,7 +42,7 @@
         "DjangoとBootstrapを使用し、フロントエンドとバックエンドを設計・開発",
         "Jiraを活用し、プロジェクトのスケジュール管理とチームリーダーシップを担当"
       ],
-      "imageUrl": "/images/experience/skewed_aivle.jpg"
+      "imageUrl": "/images/experience/skewed_aivle.webp"
     },
     {
       "id": "airforce",
@@ -54,7 +54,7 @@
         "多数の兵力の管理および訓練監督を実施",
         "シフト業務を通じて、部隊と司令部間の円滑なコミュニケーションと協力を促進"
       ],
-      "imageUrl": "/images/experience/skewed_airforce.jpg"
+      "imageUrl": "/images/experience/skewed_airforce.webp"
     },
     {
       "id": "messi",
@@ -66,7 +66,7 @@
         "効果的な授業のために、細部にわたる講義計画と教材を準備",
         "独自の教材を開発し、生徒に合わせた学習環境を提供"
       ],
-      "imageUrl": "/images/experience/skewed_messi.jpg"
+      "imageUrl": "/images/experience/skewed_messi.webp"
     }
   ],
   "projects": [
@@ -83,7 +83,7 @@
         "CSS",
         "Bootstrap"
       ],
-      "imageUrl": "/images/projects/my_dictionary.png",
+      "imageUrl": "/images/projects/my_dictionary.webp",
       "githubUrl": "https://github.com/foreverfl/web-my-dictonary"
     },
     {
@@ -99,7 +99,7 @@
         "CSS",
         "Bootstrap"
       ],
-      "imageUrl": "/images/projects/my_study_materials.png",
+      "imageUrl": "/images/projects/my_study_materials.webp",
       "githubUrl": "https://github.com/foreverfl/web-my-study-materials"
     },
     {
@@ -120,7 +120,7 @@
         "CSS",
         "Tailwind CSS"
       ],
-      "imageUrl": "/images/projects/blog-3.png",
+      "imageUrl": "/images/projects/blog-3.webp",
       "videoUrl": "/videos/blog.mp4",
       "githubUrl": "https://github.com/foreverfl/blog",
       "siteUrl": "https://mogumogu.dev/"
@@ -139,7 +139,7 @@
         "CSS",
         "Tailwind CSS"
       ],
-      "imageUrl": "/images/projects/docs-1.png",
+      "imageUrl": "/images/projects/docs-1.webp",
       "videoUrl": "/videos/docs.mp4",
       "githubUrl": "https://github.com/foreverfl/docs",
       "siteUrl": "https://docs.mogumogu.dev/"
