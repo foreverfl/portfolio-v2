@@ -138,23 +138,25 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           onClick={() => setIsOpen(false)}
         >
           <motion.div
-            className="relative max-w-[90vw] max-h-[90vh]"
+            className="relative"
             initial={{ scale: 0.8 }}
             animate={{ scale: 1 }}
             exit={{ scale: 0.8 }}
             onClick={(e) => e.stopPropagation()}
           >
-            <img
-              src={imageUrl}
-              alt={title}
-              className="w-full h-auto rounded-lg"
-            />
+            {/* Close button - positioned outside the image */}
             <button
               onClick={() => setIsOpen(false)}
-              className="absolute top-4 right-4 text-white text-2xl hover:text-gray-300"
+              className="absolute -top-12 right-0 text-white text-3xl hover:text-gray-300 bg-black bg-opacity-50 rounded-full w-10 h-10 flex items-center justify-center transition-all hover:bg-opacity-70"
+              aria-label="Close modal"
             >
               ✕
             </button>
+            <img
+              src={imageUrl}
+              alt={title}
+              className="max-w-[90vw] max-h-[85vh] w-auto h-auto rounded-lg"
+            />
           </motion.div>
         </motion.div>
         )}
