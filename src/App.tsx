@@ -11,7 +11,7 @@ function App() {
   // 이미지/비디오 프리 로드
   useEffect(() => {
     const preloadAssets = async () => {
-      const response = await fetch(`/assets.json`);
+      const response = await fetch(`${import.meta.env.BASE_URL}assets.json`);
       const assets = await response.json();
 
       if (Array.isArray(assets.images)) {

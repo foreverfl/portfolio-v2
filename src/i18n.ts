@@ -15,7 +15,7 @@ i18n
       escapeValue: false, // React에서 XSS 보호를 제공
     },
     backend: {
-      loadPath: `/locales/{{lng}}/translation.json`, // 번역 파일 경로
+      loadPath: `${import.meta.env.BASE_URL}locales/{{lng}}/translation.json`, // Use BASE_URL for correct path
     },
     detection: {
       order: ["querystring", "cookie", "localStorage", "navigator"], // 언어 감지 순서
