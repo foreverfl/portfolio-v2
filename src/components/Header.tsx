@@ -133,27 +133,27 @@ const Header: React.FC = () => {
             <span className={getFlagClass(language)}></span>
           </button>
           {showLanguageMenu && (
-            <div className="absolute right-0 mt-2 w-32 rounded z-10">
-              <ul className="py-1">
-                <li
-                  className="px-4 py-2 cursor-pointer flex items-center space-x-2"
+            <div className="absolute top-full mt-2 left-0 z-10">
+              <div className="flex items-center space-x-3 bg-white dark:bg-gray-800 px-3 py-2 rounded-lg shadow-lg">
+                <button
+                  className="p-0 m-0 border-none bg-transparent cursor-pointer hover:scale-110 transition-transform"
                   onClick={() => changeLanguage("en")}
                 >
-                  <span className="fi fi-us"></span>
-                </li>
-                <li
-                  className="px-4 py-2 cursor-pointer flex items-center space-x-2"
+                  <span className="fi fi-us text-xl"></span>
+                </button>
+                <button
+                  className="p-0 m-0 border-none bg-transparent cursor-pointer hover:scale-110 transition-transform"
                   onClick={() => changeLanguage("jp")}
                 >
-                  <span className="fi fi-jp"></span>
-                </li>
-                <li
-                  className="px-4 py-2 cursor-pointer flex items-center space-x-2"
+                  <span className="fi fi-jp text-xl"></span>
+                </button>
+                <button
+                  className="p-0 m-0 border-none bg-transparent cursor-pointer hover:scale-110 transition-transform"
                   onClick={() => changeLanguage("kr")}
                 >
-                  <span className="fi fi-kr"></span>
-                </li>
-              </ul>
+                  <span className="fi fi-kr text-xl"></span>
+                </button>
+              </div>
             </div>
           )}
         </div>

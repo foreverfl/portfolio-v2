@@ -6,8 +6,7 @@ const Footer: React.FC = () => {
     <div className="text-gray-500 dark:text-gray-400 container mx-auto flex flex-col justify-between h-[400px]">
       {/* First Footer */}
       <div className="font-text my-20">
-        Loosely designed in Visual Studio Code and coded by yours truly. Built
-        with React and deployed with GitHub Pages.
+        Built with React (Vite), deployed on GitHub Pages. Designed and developed in VS Code.
       </div>
 
       {/* Second Footer */}
