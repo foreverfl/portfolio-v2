@@ -24,6 +24,7 @@
       "subtitle": "KT cs",
       "period": "2024年4月 ~ 現在",
       "works": [
+        "データベースの設計と最適化",
         "Spring Frameworkを活用し、安定かつ拡張可能なバックエンドシステムを開発",
         "Reactを使用して、ユーザー体験を考慮した動的なフロントエンドを実装",
         "ThymeleafとjQueryを使用し、効率的なユーザーインターフェースを設計"
@@ -71,7 +72,7 @@
   "projects": [
     {
       "title": "My Dictionary",
-      "description": "開発を始めた後、初めて作成したウェブサイトです。Chrome拡張機能を通じて単語をデータベースに保存し、その単語を学習するウェブサイトです。Spring Data JPAとSpring Securityを活用しました。著作権の問題で配布はしていません。将来的にはRustとAIベースのAPIサーバーを構築し、拡張機能とアプリを通じてサービスを提供する予定です。",
+      "description": "開発を始めた後、初めて作成したウェブサイトです。Chrome拡張機能を通じて単語をデータベースに保存し、その単語を学習するウェブサイトです。Spring Data JPAとSpring Securityを活用しました。著作権の問題で配布はしていません。将来的にはAIベースのAPIサーバーを構築し、拡張機能とアプリを通じてサービスを提供する予定です。",
       "techStack": [
         "MySQL",
         "Spring Framework",
@@ -87,7 +88,7 @@
     },
     {
       "title": "My Study Materials",
-      "description": "個人の学習資料を体系的に整理するために作成したウェブサイトです。主にLinuxの学習資料を整理しており、半年間AWSでサービスとして運営しました。現在、このサービスは中断されており、今後の文書翻訳プロジェクトがあるため、再配布する予定はありません。",
+      "description": "個人の学習資料を体系的に整理するために作成したウェブサイトです。主にLinuxの学習資料を整理しており、半年間AWSでサービスとして運営しました。現在、このサービスは中断されており、将来的にはこの機能を言語学習アプリで代替する予定です。",
       "techStack": [
         "AWS",
         "MySQL",
@@ -103,12 +104,12 @@
     },
     {
       "title": "mogumogu's sundries",
-      "description": "カスタマイズが制限されていたWordPressブログを置き換えるために、ReactとNext.jsを使用して直接作成したブログです。多言語対応とマークダウンでの記事作成をサポートしています。GitHubに記事をプッシュすると自動的にアップロードされます。現在、Vercelを通じてデプロイされています。",
+      "description": "カスタマイズが制限されていたWordPressブログを置き換えるために、ReactとNext.jsを使用して直接作成したブログです。多言語対応とマークダウンでの記事作成をサポートしています。元々はVercelを通じてデプロイされていましたが、Hacker Newsのクローリング、要約、翻訳の自動化機能を追加後、現在はAWSで配布しています。",
       "techStack": [
-        "Vercel",
+        "AWS",
         "Cloudflare",
         "GitHub Actions",
-        "MongoDB",
+        "PostgreSQL",
         "Next.js",
         "MDX",
         "React",
@@ -126,9 +127,9 @@
     },
     {
       "title": "mogumogu's docs",
-      "description": "開発用リファレンス文書を一箇所にまとめたサイトです。一部の文書は直接翻訳してサブドメインで公開しています。将来的には可能な限り全ての文書を翻訳することを目指しています。現在、Vercelを通じてデプロイされています。",
+      "description": "開発用リファレンス文書を一箇所にまとめたサイトです。以前は、文書化ツールを使用して公式文書を翻訳し、デプロイしていましたが、将来的にはこの機能を言語学習アプリで代替する予定です。",
       "techStack": [
-        "Vercel",
+        "GitHub Actions",
         "Next.js",
         "React",
         "Framer Motion",

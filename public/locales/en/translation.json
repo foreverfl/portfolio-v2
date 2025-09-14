@@ -24,6 +24,7 @@
       "subtitle": "KT cs",
       "period": "April 2024 ~ Present",
       "works": [
+        "Database design and optimization",
         "Developed a stable and scalable backend system using the Spring Framework",
         "Implemented a dynamic frontend considering user experience with React",
         "Designed an efficient user interface using Thymeleaf and jQuery"
@@ -71,7 +72,7 @@
   "projects": [
     {
       "title": "My Dictionary",
-      "description": "This is the first website I created after starting development. It is a website where words can be saved to a database through a Chrome extension and studied. Spring Data JPA and Spring Security were utilized. Due to copyright issues, it has not been deployed. In the future, I plan to build a Rust and AI-based API server to provide services through extensions and apps.",
+      "description": "This is the first website I created after starting development. It is a website where words can be saved to a database through a Chrome extension and studied. Spring Data JPA and Spring Security were utilized. Due to copyright issues, it has not been deployed. In the future, I plan to build an AI-based API server to provide services through extensions and apps.",
       "techStack": [
         "MySQL",
         "Spring Framework",
@@ -87,7 +88,7 @@
     },
     {
       "title": "My Study Materials",
-      "description": "This is a website I created to systematically organize my personal study materials. It primarily organizes Linux learning materials and was operated as a service on AWS for half a year. Currently, the service has been discontinued, and I do not plan to redistribute it due to an upcoming document translation project.",
+      "description": "This is a website I created to systematically organize my personal study materials. It primarily organizes Linux learning materials and was operated as a service on AWS for half a year. Currently, the service has been discontinued, and I plan to replace this functionality with a language learning app in the future.",
       "techStack": [
         "AWS",
         "MySQL",
@@ -103,12 +104,12 @@
     },
     {
       "title": "mogumogu's sundries",
-      "description": "This is a blog I created using React and Next.js to replace my WordPress blog, which had limited customization options. It supports multiple languages and markdown writing. Blog posts are automatically uploaded when pushed to GitHub. It is currently deployed through Vercel.",
+      "description": "This is a blog I created using React and Next.js to replace my WordPress blog, which had limited customization options. It supports multiple languages and markdown writing. Originally deployed through Vercel, but after adding automated features for crawling, summarizing, and translating Hacker News, it is now deployed on AWS.",
       "techStack": [
-        "Vercel",
+        "AWS",
         "Cloudflare",
         "GitHub Actions",
-        "MongoDB",
+        "PostgreSQL",
         "Next.js",
         "MDX",
         "React",
@@ -126,9 +127,9 @@
     },
     {
       "title": "mogumogu's docs",
-      "description": "This is a site where I compile development reference documents in one place. Some documents are directly translated and deployed on subdomains. I aim to translate all possible documents in the future. It is currently deployed on Vercel.",
+      "description": "This is a site where I compile development reference documents in one place. Previously, I translated official documents using documentation tools and deployed them, but I plan to replace this functionality with a language learning app in the future.",
       "techStack": [
-        "Vercel",
+        "GitHub Actions",
         "Next.js",
         "React",
         "Framer Motion",

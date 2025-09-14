@@ -20,6 +20,7 @@ import {
   SiSpring,
   SiTypescript,
   SiVercel,
+  SiPostgresql,
 } from "react-icons/si";
 
 // 기술 스택 타입 지정
@@ -30,6 +31,7 @@ export type TechName =
   | "AWS"
   | "MongoDB"
   | "MySQL"
+  | "PostgreSQL"
   | "Spring Framework"
   | "Django"
   | "Next.js"
@@ -56,6 +58,7 @@ const techIcons: Record<TechName, JSX.Element> = {
   // 데이터베이스
   MongoDB: <SiMongodb />,
   MySQL: <SiMysql />,
+  PostgreSQL: <SiPostgresql />,
 
   // 백엔드
   "Spring Framework": <SiSpring />,
