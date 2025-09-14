@@ -1,5 +1,6 @@
 import React from "react";
 import { useAudio } from "@/contexts/AudioContext";
+import { SkipBack, SkipForward, Play, Pause, X, Music } from "@geist-ui/icons";
 
 const AudioPlayer: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const {
@@ -37,15 +38,25 @@ const AudioPlayer: React.FC<{ onClose: () => void }> = ({ onClose }) => {
           <h2 className="text-xl font-semibold">Now Playing</h2>
           <button
             onClick={onClose}
-            className="text-gray-500 hover:text-gray-700"
+            className="text-gray-500 hover:text-gray-700 transition-colors"
           >
-            &times;
+            <X size={20} />
           </button>
         </div>
 
         <div className="flex flex-col items-center mb-4">
-          <div className="w-32 h-32 bg-blue-300 rounded-md mb-3 flex items-center justify-center">
-            <span className="text-white font-bold text-2xl">🎶</span>
+          <div className="w-32 h-32 rounded-md mb-3 shadow-lg overflow-hidden">
+            {currentTrack?.albumArt ? (
+              <img
+                src={currentTrack.albumArt}
+                alt={currentTrack.name}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <div className="w-full h-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
+                <Music size={48} className="text-white" />
+              </div>
+            )}
           </div>
           <p className="text-lg font-medium">{currentTrack?.name}</p>
           <p className="text-sm text-gray-500">{currentTrack?.artist}</p>
@@ -69,21 +80,21 @@ const AudioPlayer: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         <div className="flex items-center justify-center space-x-5 mb-5">
           <button
             onClick={playPrevious}
-            className="text-gray-500 hover:text-blue-500"
+            className="text-gray-600 hover:text-gray-900 transition-colors p-2 hover:bg-gray-100 rounded-full"
           >
-            ⏮️
+            <SkipBack size={24} />
           </button>
           <button
             onClick={togglePlayPause}
-            className="bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600"
+            className="bg-gradient-to-r from-blue-500 to-purple-500 text-white p-3 rounded-full hover:shadow-lg transition-all transform hover:scale-105"
           >
-            {isPlaying ? "⏸️" : "▶️"}
+            {isPlaying ? <Pause size={24} /> : <Play size={24} />}
           </button>
           <button
             onClick={playNext}
-            className="text-gray-500 hover:text-blue-500"
+            className="text-gray-600 hover:text-gray-900 transition-colors p-2 hover:bg-gray-100 rounded-full"
           >
-            ⏭️
+            <SkipForward size={24} />
           </button>
         </div>
 
@@ -101,7 +112,19 @@ const AudioPlayer: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                   : "hover:bg-gray-100"
               }`}
             >
-              <div className="w-8 h-8 bg-blue-300 rounded-md mr-3"></div>
+              <div className="w-8 h-8 rounded-md mr-3 overflow-hidden">
+                {track.albumArt ? (
+                  <img
+                    src={track.albumArt}
+                    alt={track.name}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-blue-300 to-purple-400 flex items-center justify-center">
+                    <Music size={12} className="text-white" />
+                  </div>
+                )}
+              </div>
               <div className="flex-1">
                 <p className="text-sm font-medium">{track.name}</p>
                 <p className="text-xs text-gray-500">{track.artist}</p>

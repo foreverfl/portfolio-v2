@@ -5,11 +5,19 @@ import tenDegrees from "@/assets/audio/10℃.mp3";
 import pastelHouse from "@/assets/audio/パステルハウス.mp3";
 import kamikakushi from "@/assets/audio/神隠しの真相.mp3";
 
+// Album art imports
+import strayCatSpaceImg from "@/assets/images/audio/野良猫は宇宙を目指した.jpg";
+import twoTwentyThreeAmImg from "@/assets/images/audio/2_23_AM.jpg";
+import tenDegreesImg from "@/assets/images/audio/10℃.jpg";
+import pastelHouseImg from "@/assets/images/audio/パステルハウス.jpg";
+import kamikakushiImg from "@/assets/images/audio/神隠しの真相.jpg";
+
 export interface Track {
   id: number;
   name: string;
   artist: string;
   src: string;
+  albumArt: string;
 }
 
 interface AudioContextType {
@@ -37,30 +45,35 @@ export const tracks: Track[] = [
     name: "野良猫は宇宙を目指した",
     artist: "しゃろう",
     src: strayCatSpace,
+    albumArt: strayCatSpaceImg,
   },
   {
     id: 2,
     name: "2_23_AM",
     artist: "しゃろう",
     src: twoTwentyThreeAm,
+    albumArt: twoTwentyThreeAmImg,
   },
   {
     id: 3,
     name: "10℃",
     artist: "しゃろう",
     src: tenDegrees,
+    albumArt: tenDegreesImg,
   },
   {
     id: 4,
     name: "パステルハウス",
     artist: "かずち",
     src: pastelHouse,
+    albumArt: pastelHouseImg,
   },
   {
     id: 5,
     name: "神隠しの真相",
     artist: "しゃろう",
     src: kamikakushi,
+    albumArt: kamikakushiImg,
   },
 ];
 
