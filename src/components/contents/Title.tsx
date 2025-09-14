@@ -30,7 +30,7 @@ const Title: React.FC<TitleProps> = ({ title }) => {
 
   return (
     <div
-      className="container mx-auto pt-[200px] font-body dark:text-gray-200"
+      className="container mx-auto px-4 pt-[100px] md:pt-[150px] lg:pt-[200px] font-body dark:text-gray-200"
       id={title ? title.toLowerCase().replace(/\s+/g, "-") : undefined}
     >
       {title && (

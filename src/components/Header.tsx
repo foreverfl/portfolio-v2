@@ -100,7 +100,7 @@ const Header: React.FC = () => {
   return (
     <>
       <motion.div
-        className={`fixed z-50 top-[60px] right-[80px] flex items-center space-x-4 bg-transparent ${
+        className={`fixed z-50 top-4 right-4 md:top-8 md:right-8 lg:top-[60px] lg:right-[80px] flex items-center space-x-2 md:space-x-4 bg-transparent ${
           isOverSection
             ? 'text-white'
             : darkMode
@@ -112,14 +112,14 @@ const Header: React.FC = () => {
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
       >
         {/* 네비게이션 링크 */}
-        <nav className="flex space-x-8 pe-5">
-          <a href="#about" className="hover:no-underline">
+        <nav className="hidden md:flex space-x-4 lg:space-x-8 pe-2 md:pe-5">
+          <a href="#about" className="hover:no-underline text-sm md:text-base">
             About
           </a>
-          <a href="#experience" className="hover:no-underline">
+          <a href="#experience" className="hover:no-underline text-sm md:text-base">
             Experience
           </a>
-          <a href="#projects" className="hover:no-underline">
+          <a href="#projects" className="hover:no-underline text-sm md:text-base">
             Projects
           </a>
         </nav>
@@ -134,24 +134,24 @@ const Header: React.FC = () => {
           </button>
           {showLanguageMenu && (
             <div className="absolute top-full mt-2 left-0 z-10">
-              <div className="flex items-center space-x-3 bg-white dark:bg-gray-800 px-3 py-2 rounded-lg shadow-lg">
+              <div className="flex items-center space-x-2 md:space-x-3 bg-white dark:bg-gray-800 px-2 md:px-3 py-2 rounded-lg shadow-lg">
                 <button
                   className="p-0 m-0 border-none bg-transparent cursor-pointer hover:scale-110 transition-transform"
                   onClick={() => changeLanguage("en")}
                 >
-                  <span className="fi fi-us text-xl"></span>
+                  <span className="fi fi-us text-lg md:text-xl"></span>
                 </button>
                 <button
                   className="p-0 m-0 border-none bg-transparent cursor-pointer hover:scale-110 transition-transform"
                   onClick={() => changeLanguage("jp")}
                 >
-                  <span className="fi fi-jp text-xl"></span>
+                  <span className="fi fi-jp text-lg md:text-xl"></span>
                 </button>
                 <button
                   className="p-0 m-0 border-none bg-transparent cursor-pointer hover:scale-110 transition-transform"
                   onClick={() => changeLanguage("kr")}
                 >
-                  <span className="fi fi-kr text-xl"></span>
+                  <span className="fi fi-kr text-lg md:text-xl"></span>
                 </button>
               </div>
             </div>

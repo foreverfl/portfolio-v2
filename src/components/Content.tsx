@@ -72,7 +72,7 @@ const Content: React.FC = () => {
 
       <Title title="Experience" />
 
-      <div className="container mx-auto font-title text-8xl mt-10 dark:text-gray-200">
+      <div className="container mx-auto px-4 font-title text-4xl md:text-6xl lg:text-8xl mt-10 dark:text-gray-200">
         <span>{t("experience.title1")}</span>
         <br />
         <span>{t("experience.title2")}</span>
@@ -96,14 +96,14 @@ const Content: React.FC = () => {
       <Title />
 
       <Title title="Projects" />
-      <div className="container mx-auto mt-10 space-y-8">
+      <div className="container mx-auto px-4 mt-10 space-y-8">
         {projects.map((project, index) => (
           <div
             key={index}
             ref={(el: HTMLDivElement | null) => {
               cardRefs.current[index] = el;
             }} // 각 카드의 ref 저장
-            className={`${index % 2 === 0 ? "ml-0" : "ml-auto"} w-3/4`} // 홀수는 오른쪽, 짝수는 왼쪽
+            className={`w-full md:w-11/12 lg:w-3/4 ${index % 2 === 0 ? "md:ml-0" : "md:ml-auto"}`} // 홀수는 오른쪽, 짝수는 왼쪽
           >
             <ProjectCard
               title={project.title}

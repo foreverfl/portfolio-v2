@@ -40,14 +40,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
   return (
     <div
-      className={`flex ${
-        isLeft ? "flex-row" : "flex-row-reverse"
-      } items-center p-8 my-6`}
+      className={`flex flex-col md:flex-row ${
+        isLeft ? "md:flex-row" : "md:flex-row-reverse"
+      } items-center p-4 md:p-6 lg:p-8 my-4 md:my-6`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* 이미지 영역 */}
-      <div onClick={() => setIsOpen(true)} className="w-1/2 cursor-pointer">
+      <div onClick={() => setIsOpen(true)} className="w-full md:w-1/2 mb-4 md:mb-0 cursor-pointer">
         {videoUrl && isHovered ? (
           <motion.video
             src={videoUrl}
@@ -67,10 +67,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       </div>
 
       {/* 텍스트 영역 */}
-      <div className="w-1/2 flex flex-col justify-end text-sm space-y-4 p-4">
+      <div className="w-full md:w-1/2 flex flex-col justify-end text-sm space-y-4 p-0 md:p-4">
         <div
-          className={`font-body font-semibold	text-2xl relative ${
-            isLeft ? "text-right" : "text-left"
+          className={`font-body font-semibold	text-xl md:text-2xl relative ${
+            isLeft ? "text-left md:text-right" : "text-left"
           }`}
         >
           <span ref={titleRef}>{title}</span>
@@ -95,14 +95,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             />
           )}
         </div>
-        <p className="font-body text-gray-600 dark:text-gray-300 leading-relaxed">{description}</p>
+        <p className="font-body text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed">{description}</p>
         <div className="flex flex-wrap gap-2">
           {techStack.map((tech) => (
             <TechTag key={tech} name={tech as TechName} />
           ))}
         </div>
         <div
-          className={`flex mt-4 ${isLeft ? "justify-end" : "justify-start"}`}
+          className={`flex mt-4 ${isLeft ? "justify-start md:justify-end" : "justify-start"}`}
         >
           {/* GitHub */}
           <a
@@ -111,7 +111,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             rel="noopener noreferrer"
             className="text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-200"
           >
-            <Github className="w-8 h-8 transition-transform transform hover:scale-110" />
+            <Github className="w-6 h-6 md:w-8 md:h-8 transition-transform transform hover:scale-110" />
           </a>
           {/* Website */}
           {siteUrl && (
@@ -121,7 +121,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               rel="noopener noreferrer"
               className="text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-200 ml-4"
             >
-              <FileText className="w-8 h-8 transition-transform transform hover:scale-110" />
+              <FileText className="w-6 h-6 md:w-8 md:h-8 transition-transform transform hover:scale-110" />
             </a>
           )}
         </div>

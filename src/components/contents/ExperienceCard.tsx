@@ -42,13 +42,13 @@ const ExperienceCard: React.FC<
 
   return (
     <div
-      className="relative bg-white dark:bg-gray-800 rounded-lg overflow-hidden transform -skew-y-12 h-[500px]"
+      className="relative bg-white dark:bg-gray-800 rounded-lg overflow-hidden transform md:-skew-y-12 h-auto md:h-[400px] lg:h-[500px]"
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
     >
       {/* Background image with counter-skew to fill the skewed container */}
       <motion.div
-        className="absolute -inset-y-1/2 -inset-x-10 z-0 transform skew-y-12"
+        className="absolute -inset-y-1/2 -inset-x-10 z-0 transform md:skew-y-12"
         style={{
           backgroundImage: isHovered ? `url(${highQualityImage})` : "none",
           backgroundSize: "cover",
@@ -67,13 +67,14 @@ const ExperienceCard: React.FC<
       <div className="absolute inset-0 border-y border-dashed border-gray-300 dark:border-gray-600 z-10" />
 
       {/* 텍스트 */}
-      <div className="relative flex flex-col justify-end h-full p-10 z-10 font-body transform skew-y-12 select-none">
+      <div className="relative flex flex-col justify-end h-full p-6 md:p-8 lg:p-10 z-10 font-body transform md:skew-y-12 select-none">
         {/* 제목 및 부제목 */}
-        <div className="font-semibold text-xl mb-2">
+        <div className="font-semibold text-lg md:text-xl mb-2">
           <span className={`${isHovered ? "text-white" : "text-gray-600 dark:text-gray-300"}`}>
             {title}
           </span>
-          &nbsp;
+          <span className="hidden md:inline">&nbsp;</span>
+          <br className="md:hidden" />
           <span
             className={`${
               isHovered ? "text-blue-300" : "text-primary text-blue-500"
@@ -87,7 +88,7 @@ const ExperienceCard: React.FC<
         <div
           className={`${
             isHovered ? "text-white" : "text-gray-500 dark:text-gray-400"
-          } text-lg mb-4`}
+          } text-base md:text-lg mb-4`}
         >
           {period}
         </div>
@@ -99,7 +100,7 @@ const ExperienceCard: React.FC<
               key={index}
               className={`${
                 isHovered ? "text-white" : "text-gray-800 dark:text-gray-200"
-              } text-lg list-inside`}
+              } text-sm md:text-base lg:text-lg list-inside`}
             >
               {work}
             </li>

@@ -15,11 +15,11 @@ const images = [
 
 const RotatingImageGrid: React.FC = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [gridWidth, setGridWidth] = useState(window.innerWidth / 4);
+  const [gridWidth, setGridWidth] = useState(window.innerWidth < 768 ? window.innerWidth / 2 : window.innerWidth / 4);
 
   useEffect(() => {
     const handleResize = () => {
-      setGridWidth(window.innerWidth / 4);
+      setGridWidth(window.innerWidth < 768 ? window.innerWidth / 2 : window.innerWidth / 4);
     };
     window.addEventListener("resize", handleResize);
 
@@ -43,9 +43,9 @@ const RotatingImageGrid: React.FC = () => {
   };
 
   return (
-    <div className="grid grid-cols-4 grid-rows-2 p-1 gap-1 overflow-hidden">
+    <div className="grid grid-cols-2 md:grid-cols-4 grid-rows-2 p-1 gap-1 overflow-hidden">
       {/* 왼쪽 */}
-      <div className="col-span-2 row-span-2 grid grid-cols-2 grid-rows-2 gap-1">
+      <div className="col-span-1 md:col-span-2 row-span-2 grid grid-cols-2 grid-rows-2 gap-1">
         {/* 1 */}
         <motion.div
           key={getRotatedIndex(0)}
@@ -90,7 +90,7 @@ const RotatingImageGrid: React.FC = () => {
       </div>
 
       {/* 오른쪽 */}
-      <div className="col-span-2 row-span-2 grid grid-cols-2 gap-1">
+      <div className="col-span-1 md:col-span-2 row-span-2 grid grid-cols-1 md:grid-cols-2 gap-1">
         {/* 3 */}
         <motion.div
           key={getRotatedIndex(3)}

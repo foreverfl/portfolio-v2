@@ -55,7 +55,7 @@ const CatchPhrase: React.FC = () => {
     <div className="relative w-full h-screen overflow-hidden bg-black">
       {/* 격자 트랜지션 효과 */}
       {showGrid && (
-        <div className="absolute inset-0 grid grid-cols-8 grid-rows-6 z-10">
+        <div className="absolute inset-0 grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 grid-rows-4 md:grid-rows-5 lg:grid-rows-6 z-10">
           {Array.from({ length: gridSize.rows * gridSize.cols }).map(
             (_, index) => (
               <motion.div
@@ -87,9 +87,9 @@ const CatchPhrase: React.FC = () => {
       />
 
       {/* 동영상에 따른 텍스트 */}
-      <div className="absolute left-[8rem] bottom-[10rem] text-white z-20 h-20 select-none">
-        <div className="font-body pb-5">{videoQuestion}</div>
-        <div className="font-title text-8xl">
+      <div className="absolute left-4 md:left-16 lg:left-[8rem] bottom-16 md:bottom-24 lg:bottom-[10rem] text-white z-20 h-20 select-none px-4 md:px-0">
+        <div className="font-body text-sm md:text-base pb-2 md:pb-5">{videoQuestion}</div>
+        <div className="font-title text-3xl md:text-5xl lg:text-8xl">
           <TypingText text={videoTexts[currentVideoIndex]} />
         </div>
       </div>
