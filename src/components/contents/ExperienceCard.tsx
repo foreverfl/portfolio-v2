@@ -35,7 +35,6 @@ const ExperienceCard: React.FC<
       "airforce": airforceImage,
       "messi": messiImage
     };
-    console.log('ID received:', id, 'Image mapped:', imageMap[id]);
     return imageMap[id] || imageUrl;
   };
 
